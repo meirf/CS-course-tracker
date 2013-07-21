@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+    {% for meal in meals %}
+      {% if meal.author %}
+        <b>{{ meal.author.email() }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ meal.location }}</blockquote>
+    {% endfor %}
+
+    Where are you hosting the meal?
+    <form action="/sign?meal_sched_name={{ meal_sched_name }}" method="post">
+      <div><textarea name="location" rows="1" cols="25"></textarea></div>
+      <div><input type="submit" value="Plan Meal"></div>
+    </form>
+
+    <hr>
+
+    <form></form>Meal Schedule name:
+      <input value="{{ meal_sched_name }}" name="meal_sched_name">
+      <input type="submit" value="switch">
+    </form>
+
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+
+  </body>
+</html>
+{% endautoescape %}
