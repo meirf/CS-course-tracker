@@ -1,5 +1,5 @@
 import cgi
-import urllib
+import urllib 
 
 from google.appengine.api import users, urlfetch
 
@@ -26,7 +26,7 @@ def meal_sched_key(meal_sched_name=DEFAULT_MEAL_SCHED_NAME):
 
 
 class Meal(ndb.Model):
-    """Models an individual MealSchedule entry with author, location, and date."""
+    """Models an individual MealSchedule entry with author, location, and date. """
     author = ndb.UserProperty()
     location = ndb.StringProperty(indexed=False)
     date = ndb.DateTimeProperty(auto_now_add=True)
