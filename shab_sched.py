@@ -2,7 +2,6 @@ import cgi
 import urllib 
 
 from google.appengine.api import users, urlfetch
-
 from google.appengine.ext import ndb
 
 import os
@@ -46,30 +45,12 @@ class MainPage(webapp2.RequestHandler):
         else:
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
-        
-        # eventuall move to separate function; set url up top
-        #form_fields = {
-        #  "oauth_consumer_key": "shobbus.appspot.com",
-        #  "oauth_nonce": "Johnson",
-        #  "oauth_signature_method": "Albert.Johnson@example.com",
-        #  "oauth_signature": "Albert.Johnson@example.com",
-        #  "oauth_timestamp": "Albert.Johnson@example.com",
-        #  "scope": "Albert.Johnson@example.com",
-        #  "oauth_callback": "Albert.Johnson@example.com",
-        #}
-        #form_data = urllib.urlencode(form_fields)
-        #esult = urlfetch.fetch(url="https://www.google.com/accounts/OAuthGetRequestToken",
-        #                        payload=form_data,
-        #                        method=urlfetch.POST,
-        #                        headers={'Content-Type': 'application/x-www-form-urlencoded'})
-        #    
 
         template_values = {
             'meals': meals,
             'meal_sched_name': urllib.quote_plus(meal_sched_name),
             'url': url,
             'url_linktext': url_linktext,
-            #'response': response,
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
