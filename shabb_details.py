@@ -1,18 +1,21 @@
 class ShabbCalendarDetails():
 
-    def __init__(self, mon_fri, day_fri, yr_fri, mon_sat, day_sat, year_sat):
-        self.mon_fri = mon_fri
-        self.day_fri = day_fri
-        self.yr_fri = yr_fri
-        self.mon_sat = mon_sat
-        self.day_sat = day_sat
-        self.year_sat = year_sat
+    def __init__(self, fri_mon, fri_day, fri_yr, sat_mon, sat_day, sat_yr):
+        self.fri_mon = fri_mon
+        self.fri_day = fri_day
+        self.fri_yr = fri_yr
+        self.sat_mon = sat_mon
+        self.sat_day = sat_day
+        self.sat_yr = sat_yr
 
-    def set_candle_time(self, time):
-        self.time = time
-
-    def set_zip_code(self, zip_code):
-        self.zip_code = zip_code
+    def set_candle_time(self, candle_time):
+        self.candle_time = candle_time
 
     def get_candle_time(self):
-        return self.time
+        return self.candle_time
+
+    def set_havdalah_time(self, havdalah_time):
+        self.havdalah_time = havdalah_time
+
+    def get_havdalah_time(self):
+        return self.havdalah_time    
