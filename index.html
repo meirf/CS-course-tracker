@@ -11,7 +11,15 @@
       <blockquote>{{ meal.location }}</blockquote>
     {% endfor %}
 
-    Where are you hosting the meal?
+    What day?
+    <select>
+        {% for date in dates %}
+        <option value="{{meal_sched_name}}">Friday   Dinner {{ date.fri_mon }}/{{ date.fri_day }} </option>
+        <option value="{{meal_sched_name}}">Saturday Lunch {{ date.sat_mon }}/{{ date.sat_day }}</option>
+        {% endfor %}
+    </select>
+
+    Where is the meal?
     <form action="/sign?meal_sched_name={{ meal_sched_name }}" method="post">
       <div><textarea name="location" rows="1" cols="25"></textarea></div>
       <div><input type="submit" value="Plan Meal"></div>

@@ -2,6 +2,13 @@ from json import load
 from urllib2 import urlopen
 from datetime import datetime
 from shabb_details import ShabbCalendarDetails
+from google.appengine.ext import ndb
+
+def get_calendar_key(url):
+    return ndb.Key('CalendarResponse', url)
+
+class CalendarResponse(ndb.Model):
+    json_response_data = ndb.JsonProperty()
 
 def next_weeks_ltd(zipcode, lim):
     return next_weeks(zipcode)[0:lim]
@@ -40,6 +47,14 @@ def get_all_upcoming_items(month, year, zipcode):
      return get_shab_from_json(get_url(month, year, zipcode))
 
 def get_shab_from_json(url):
+    key = get_calendar_key(url)
+    if key.get() == None: 
+        json_obj = load(urlopen(url))
+        response = CalendarResponse(json_response_data=json_obj)
+        response.put()
+        return json_obj['items']
+    else:
+        return key.get()['items']
     return load(urlopen(url))['items']
 
 def get_url(month, year, zipcode):

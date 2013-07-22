@@ -1,12 +1,12 @@
 import cgi
 import urllib 
-
-from google.appengine.api import users, urlfetch
-from google.appengine.ext import ndb
-
 import os
 import jinja2
 import webapp2
+
+from google.appengine.api import users, urlfetch
+from google.appengine.ext import ndb
+from shab_dates import next_weeks_ltd
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -46,7 +46,10 @@ class MainPage(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
+        upcoming_shab_dates = next_weeks_ltd(90210, 4)
+
         template_values = {
+            'dates': upcoming_shab_dates,
             'meals': meals,
             'meal_sched_name': urllib.quote_plus(meal_sched_name),
             'url': url,
