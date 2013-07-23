@@ -11,7 +11,9 @@
       <blockquote>{{ meal.location }}</blockquote>
     {% endfor %}
 
-    What day?
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+
+    <p><b>Day*</b></p>
     <select>
         {% for date in dates %}
         <option value="{{meal_sched_name}}">Friday   Dinner {{ date.fri_mon }}/{{ date.fri_day }} </option>
@@ -19,11 +21,24 @@
         {% endfor %}
     </select>
 
-    Where is the meal?
+    <p><b>Time*</b></p>
+    <select>
+        {% for time in times %}
+        <option value="{{meal_sched_name}}">{{ time }}</option>
+        {% endfor %}
+    </select>    
+
+    <p><b>Location*</b></p>
     <form action="/sign?meal_sched_name={{ meal_sched_name }}" method="post">
-      <div><textarea name="location" rows="1" cols="25"></textarea></div>
-      <div><input type="submit" value="Plan Meal"></div>
+      <div><textarea name="location_main" rows="1" cols="25"></textarea></div>
+        <p>If walking to the location, enter meetup place and time:</p>
+     <div><textarea name="location_meetup" rows="1" cols="25"></textarea></div>
+     <div><textarea name="invite_message" rows="3" cols="25"></textarea></div>
+     <div><input type="submit" value="Plan Meal"></div>
     </form>
+
+
+    <p><b>{{default_invite}}</b></p>
 
     <hr>
 
@@ -31,8 +46,6 @@
       <input value="{{ meal_sched_name }}" name="meal_sched_name">
       <input type="submit" value="switch">
     </form>
-
-    <a href="{{ url|safe }}">{{ url_linktext }}</a>
 
   </body>
 </html>

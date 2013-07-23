@@ -7,13 +7,20 @@ import webapp2
 from google.appengine.api import users, urlfetch
 from google.appengine.ext import ndb
 from shab_dates import next_weeks_ltd
-
+from shab_dates import get_times_quarters
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'])
 
 DEFAULT_MEAL_SCHED_NAME = 'default_meal_sched'
+
+DEFAULT_INVITATION_MESSAGE = "Yo snitch, please join my Shabbat meal.\nSign in at"#+users.get_current_user().email()#+"<a href=\"http://shobbus.appspot.com/\">shobbus.appspot.com</a>"
+   #"\n-"#+users.get_current_user().nickname()
+
+#DEFAULT_INVITATION_MESSAGE = "Yo snitch, please join my Shabbat meal.\nSign in at"+"<a href=\"http://shobbus.appspot.com/\">shobbus.appspot.com</a>"
+ # "\n-"+users.get_current_user().nickname()
+
 
 # We set a parent key on the 'Meals' to ensure that they are all in the same
 # entity group. Queries across the single entity group will be consistent.
@@ -47,8 +54,11 @@ class MainPage(webapp2.RequestHandler):
             url_linktext = 'Login'
 
         upcoming_shab_dates = next_weeks_ltd(90210, 4)
+        times = get_times_quarters()
 
         template_values = {
+            'default_invite': DEFAULT_INVITATION_MESSAGE,
+            'times': times,
             'dates': upcoming_shab_dates,
             'meals': meals,
             'meal_sched_name': urllib.quote_plus(meal_sched_name),

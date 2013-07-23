@@ -55,7 +55,6 @@ def get_shab_from_json(url):
         return json_obj['items']
     else:
         return key.get()['items']
-    return load(urlopen(url))['items']
 
 def get_url(month, year, zipcode):
     bare_url = "http://www.hebcal.com/hebcal/?v=1&cfg=json&c=on"
@@ -71,3 +70,25 @@ def next_month_year(month=this_month_year()[0], year=this_month_year()[1]):
         return (1, year+1)
     else: 
         return (month+1, year)
+
+# 11:00 am -> 11:45 am, 12:00 pm -> 12:45 pm
+# 1:00 pm -> 10:00pm
+def get_times_quarters():
+    quarters = []
+    quarters.append("11:00 am")
+    quarters.append("11:15 am")
+    quarters.append("11:30 am")
+    quarters.append("11:45 am")
+    quarters.append("Noon")
+    quarters.append("12:15 pm")
+    quarters.append("12:30 pm")
+    quarters.append("12:45 pm")
+    for hour in range(1,10):
+        quarters.append(str(hour)+":00 pm")
+        quarters.append(str(hour)+":15 pm")
+        quarters.append(str(hour)+":30 pm")
+        quarters.append(str(hour)+":45 pm")
+    quarters.append("10:00 pm")
+    return quarters
+
+

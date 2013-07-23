@@ -3,17 +3,17 @@ import shab_dates
 
 class DateTests(unittest.TestCase):
 
-    def testCurrentMonthYear(self):
+    def test_current_month_year(self):
         self.failUnless(len(shab_dates.this_month_year())==2)
 
-    def testNextMonthYear(self):
+    def test_next_month_year(self):
         self.failUnless(shab_dates.next_month_year(7, 2013)==(8, 2013)
                         and shab_dates.next_month_year(12, 2013)==(1, 2014))
 
-    def testUrl(self):
+    def test_url(self):
         self.failUnless(shab_dates.get_url(7,2013,90210)=="http://www.hebcal.com/hebcal/?v=1&cfg=json&c=on&month=7&year=2013&zip=90210")    
 
-    def testUpcomingShabDates(self):
+    def test_upcoming_shab_dates(self):
         friday_dict = {u'category': u'candles', u'date': u'2013-07-05T19:52:00-07:00', u'title': u'Candle lighting: 7:52pm'}
         saturday_dict = {u'category': u'havdalah', u'date': u'2013-07-06T21:21:00-07:00', u'title': u'Havdalah (72 min): 9:21pm'}
         shab_obj = shab_dates.convert2shab_obj(friday_dict, saturday_dict)
@@ -30,9 +30,17 @@ class DateTests(unittest.TestCase):
             and shab_obj.get_havdalah_time() == " 9:21pm"
         )
 
-    def testCount(self):
+    def test_count(self):
         self.failUnless(len(shab_dates.next_weeks(90210)) >= 4
             and len(shab_dates.next_weeks_ltd(90210,3))==3)
+
+class TimeTests(unittest.TestCase):
+
+    def test_time_slots(self):
+        self.failUnless(len(shab_dates.get_times_quarters())==45)
+
+
+
 
          
 def main():
