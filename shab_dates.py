@@ -91,4 +91,26 @@ def get_times_quarters():
     quarters.append("10:00 pm")
     return quarters
 
+def get_days_of_week():
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    return days
+
+# noon
+# 1pm -> 11 pm
+# midnight
+# 1 am -> 11 am
+def get_deadline_times():
+    full_day = []
+    full_day.append("noon")
+    for hr in range(1, 12):
+        full_day.append(str(hr)+":00 pm")
+    full_day.append("midnight")
+    for hr in range(1, 12):
+        full_day.append(str(hr)+":00 am")
+    return full_day
+
+
+
+
+
 
