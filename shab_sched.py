@@ -10,6 +10,8 @@ from shab_dates import next_weeks_ltd
 from shab_dates import get_times_quarters
 from shab_dates import get_days_of_week
 from shab_dates import get_deadline_times
+from shab_dates import get_next_fri_sat_dates
+from shab_dates import get_next_weekend_dates
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -50,7 +52,8 @@ class MainPage(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
-        upcoming_shab_dates = next_weeks_ltd(90210, 4)
+        (fri, sat) = get_next_fri_sat_dates()
+        upcoming_shab_dates = get_next_weekend_dates(fri, sat, 4)
         times = get_times_quarters()
 
         deadline_days = get_days_of_week()

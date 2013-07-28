@@ -16,8 +16,8 @@
     <p><b>Day*</b></p>
     <select>
         {% for date in dates %}
-        <option value="{{meal_sched_name}}">Friday   Dinner {{ date.fri_mon }}/{{ date.fri_day }} </option>
-        <option value="{{meal_sched_name}}">Saturday Lunch {{ date.sat_mon }}/{{ date.sat_day }}</option>
+        <option value="{{meal_sched_name}}">Fri Dinner {{date[0].strftime("%B")}} {{date[0].strftime("%d")}}</option>
+        <option value="{{meal_sched_name}}">Sat Lunch  {{date[1].strftime("%B")}} {{date[1].strftime("%d")}}</option>
         {% endfor %}
     </select>
 

@@ -1,18 +1,42 @@
 from json import load
 from urllib2 import urlopen
-from datetime import datetime
+import datetime
 from shabb_details import ShabbCalendarDetails
-from google.appengine.ext import ndb
 
+"""
 def get_calendar_key(url):
     return ndb.Key('CalendarResponse', url)
-
+"""
+"""
 class CalendarResponse(ndb.Model):
     json_response_data = ndb.JsonProperty()
+"""
 
 def next_weeks_ltd(zipcode, lim):
     return next_weeks(zipcode)[0:lim]
 
+
+#monday 0 sunday 6
+def get_current_day():
+    return datetime.datetime.today().weekday()
+
+def get_next_fri_sat_dates():
+    today = datetime.date.today()
+    FRI = 4
+    SAT = 5
+    next_fri = today + datetime.timedelta(days=(FRI-today.weekday()) % 7 )
+    next_sat = today + datetime.timedelta(days=(SAT-today.weekday()) % 7 )  
+    return (next_fri, next_sat)
+
+def get_next_weekend_dates(next_fri, next_sat, num_total):
+    next_wknds = []
+    next_wknds.append((next_fri, next_sat))
+    for i in range(num_total-1):
+        next_wknds.append((next_fri+datetime.timedelta(weeks=(i+1)), next_sat+datetime.timedelta(weeks=(i+1))))
+
+    return next_wknds
+
+"""
 def next_weeks(zipcode):
     upcoming_sh_json = get_all_upcoming_shabs(zipcode)
     upcoming_shabs = []
@@ -70,6 +94,7 @@ def next_month_year(month=this_month_year()[0], year=this_month_year()[1]):
         return (1, year+1)
     else: 
         return (month+1, year)
+"""
 
 # 11:00 am -> 11:45 am, 12:00 pm -> 12:45 pm
 # 1:00 pm -> 10:00pm
