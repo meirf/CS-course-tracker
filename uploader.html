@@ -1,0 +1,40 @@
+<!doctype html>  
+ <html>  
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>  
+      <script src="listdetails.js"></script>  
+      <style>  
+           .disabled {  
+                visibility: hidden;  
+           }  
+           #addbirdphoto {  
+                cursor: pointer;  
+                border-radius: 5px;  
+                -moz-border-radius: 5px;  
+                -webkit-border-radius: 5px;  
+                padding: 2px;  
+                font-size: 11pt;  
+                font-weight: 400;  
+                font-family: "MS Sans Serif";  
+                /*text-shadow: -1px -1px 0 black;*/  
+                text-align: center;  
+                margin: 0 2px 2px 0;  
+                padding: 5px;  
+                border: 1px;  
+                border-style: outset;  
+                background-color: #4D90FE;  
+                color: white;  
+                /*height: 10px;*/  
+           }  
+      </style>  
+      <body onload="new ListDetailsHandler().initializeEvents()">  
+           <div class="disabled">  
+                <input id="addbirdphotoinput" type="file" name="Addphotos" multiple="true" value="" onchange="new ListDetailsHandler().handlephotoupload(this)"/>  
+           </div>  
+           <div class="container">  
+                <table id="phototable">  
+                     <tr>  
+                          <td id="addbirdphoto">Upload photos</td>  
+                     </tr>  
+                </table>  
+      </body>  
+ </html>  
