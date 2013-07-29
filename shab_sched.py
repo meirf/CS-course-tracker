@@ -110,8 +110,17 @@ class Verify2Google(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.write('google-site-verification: google17bd46c295eec9f7.html')
 
+class Photo(webapp2.RequestHandler):
+
+
+    def get(self):
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('uploader.html')
+        self.response.write(template.render(template_values))
+
 application = webapp2.WSGIApplication(
     [('/', MainPage), 
      ('/sign', MealSchedule),
-     ('/google17bd46c295eec9f7.html', Verify2Google)
+     ('/google17bd46c295eec9f7.html', Verify2Google),
+     ('/test', Photo)
      ], debug=True)
