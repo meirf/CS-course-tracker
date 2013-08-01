@@ -6,6 +6,8 @@ import os
 import jinja2
 import webapp2
 
+from random import randint
+from mail_tool import Mailer
 from google.appengine.api import users, urlfetch
 from google.appengine.ext import ndb
 from shab_dates import next_weeks_ltd
@@ -43,7 +45,13 @@ class Meal(ndb.Model):
 
 class MainPage(webapp2.RequestHandler):
 
-    def get(self):
+    def get(self):       
+
+        mail_list = ("meirfischer@gmail.com", "mf8191@aol.com")
+        subject = "Your welcome" + str(randint(2,10000))
+        mess = "Dear Bro[ette],"
+        Mailer.send_mail(mail_list, subject, mess)
+
         meal_sched_name = self.request.get('meal_sched_name',
                 DEFAULT_MEAL_SCHED_NAME)
         meals_query = \
