@@ -16,6 +16,7 @@ from shab_dates import get_days_of_week
 from shab_dates import get_deadline_times
 from shab_dates import get_next_fri_sat_dates
 from shab_dates import get_next_weekend_dates
+from course_listing import courses
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -75,6 +76,7 @@ class MainPage(webapp2.RequestHandler):
         deadline_times = get_deadline_times()
 
         template_values = {
+            'courses' : courses,
             'deadline_times': deadline_times,
             'deadline_days': deadline_days,
             'nickname': nickname,
@@ -84,7 +86,7 @@ class MainPage(webapp2.RequestHandler):
             'meal_sched_name': urllib.quote_plus(meal_sched_name),
             'url': url,
             'url_linktext': url_linktext,
-            }
+        }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))
@@ -119,7 +121,6 @@ class Verify2Google(webapp2.RequestHandler):
         self.response.write('google-site-verification: google17bd46c295eec9f7.html')
 
 class Photo(webapp2.RequestHandler):
-
 
     def get(self):
         template_values = {}
