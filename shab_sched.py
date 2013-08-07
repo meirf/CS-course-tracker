@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 import cgi
 import urllib
+import urllib2
 import os
 import jinja2
 import webapp2
 
+from google.appengine.api import urlfetch
 from random import randint
 from mail_tool import Mailer
 from google.appengine.api import users, urlfetch
@@ -17,6 +19,8 @@ from shab_dates import get_deadline_times
 from shab_dates import get_next_fri_sat_dates
 from shab_dates import get_next_weekend_dates
 from course_listing import courses
+from course_listing import adv_courses
+from operator import itemgetter
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -48,11 +52,6 @@ class MainPage(webapp2.RequestHandler):
 
     def get(self):       
 
-        mail_list = ("meirfischer@gmail.com", "mf8191@aol.com")
-        subject = "Your welcome" + str(randint(2,10000))
-        mess = "Dear Bro[ette],"
-        Mailer.send_mail(mail_list, subject, mess)
-
         meal_sched_name = self.request.get('meal_sched_name',
                 DEFAULT_MEAL_SCHED_NAME)
         meals_query = \
@@ -77,6 +76,7 @@ class MainPage(webapp2.RequestHandler):
 
         template_values = {
             'courses' : courses,
+            'adv_courses':sorted(list(adv_courses), key=itemgetter(1, 2)),
             'deadline_times': deadline_times,
             'deadline_days': deadline_days,
             'nickname': nickname,
@@ -120,16 +120,31 @@ class Verify2Google(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.write('google-site-verification: google17bd46c295eec9f7.html')
 
-class Photo(webapp2.RequestHandler):
+class Courses(webapp2.RequestHandler):
 
     def get(self):
-        template_values = {}
-        template = JINJA_ENVIRONMENT.get_template('uploader.html')
-        self.response.write(template.render(template_values))
+        url = "http://www.google.com/"
+        try:
+          result = urllib2.urlopen(url)
+          doSomethingWithResult(result)
+        except urllib2.URLError, e:
+          handleError(e)
+        '''
+        url = "http://shobbus.appspot.com/test"
+        result = urlfetch.fetch(url)
+        if result.status_code == 200:
+            return webapp2.Response('Hello, world!')        
+        '''
+
+class Test(webapp2.RequestHandler):
+
+    def get(self):
+        return webapp2.Response('Hello, world!')
 
 application = webapp2.WSGIApplication(
     [('/', MainPage), 
      ('/sign', MealSchedule),
      ('/google17bd46c295eec9f7.html', Verify2Google),
-     ('/test', Photo)
+     ('/courses', Courses),
+     ('/test', Test)
      ], debug=True)

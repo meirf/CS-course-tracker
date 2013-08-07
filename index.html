@@ -4,15 +4,49 @@
   <body>
 
   <p><b>1.&nbsp;&nbsp;&nbsp;CS Core Classes</b></p>  
+  
   <form>
+  
     {% for course in courses %}
       {% if course.adv_vers == None %}
-      <input type="checkbox" name="course" checked>{{course[0]}} {{course[1]}} {{course[2]}}<br>
+        <label class="checkbox" for={{course[1]}}{{course[2]}}>
+          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
+            <span>{{course[0]}} {{course[1]}} {{course[2]}}
+            </span>
+        </label>
+      <br>
       {% else %}
-      <input type="checkbox" name="course" checked>{{course[0]}} {{course[1]}} {{course[2]}} or {{course[3][0]}} {{course[3][1]}} {{course[3][2]}}<br>
+      <label class="checkbox" for={{course[1]}}{{course[2]}}>
+          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
+            <span>{{course[0]}} {{course[1]}} {{course[2]}} or {{course[3][0]}} {{course[3][1]}} {{course[3][2]}}
+            </span>
+        </label>
+      <br>
       {% endif %}
     {% endfor %}
+
+  <p><b>2.&nbsp;&nbsp;&nbsp;Advanced CS Classes</b></p>
+  
+    {% for course in adv_courses %}
+      {% if course.adv_vers == None %}
+      <label class="checkbox" for={{course[1]}}{{course[2]}}>
+          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
+            <span>{{course[0]}} {{course[1]}} {{course[2]}}
+            </span>
+        </label>
+      <br>      
+      {% else %}
+      <label class="checkbox" for={{course[1]}}{{course[2]}}>
+          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
+            <span>{{course[0]}} {{course[1]}} {{course[2]}} or {{course[3][0]}} {{course[3][1]}} {{course[3][2]}}
+            </span>
+        </label>
+       <br>      
+      {% endif %}
+    {% endfor %}
+  
   </form>
+
 
     <p><b>Day*</b></p>
     <select>
