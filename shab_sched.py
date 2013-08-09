@@ -76,7 +76,7 @@ class MainPage(webapp2.RequestHandler):
 
         template_values = {
             'courses' : courses,
-            'adv_courses':sorted(list(adv_courses), key=itemgetter(1, 2)),
+            'adv_courses': sorted(list(adv_courses), key=itemgetter(1, 2)),
             'deadline_times': deadline_times,
             'deadline_days': deadline_days,
             'nickname': nickname,
