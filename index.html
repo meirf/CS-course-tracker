@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
-  <body>
+  <body>   
 
-  <p><b>1.&nbsp;&nbsp;&nbsp;CS Core Classes</b></p>  
-  
-  <form>
-  
-    {% for course in courses %}
+  {% macro show_classes(course_list) -%}
+    {% for course in course_list %}
       {% if course.adv_vers == None %}
         <label for={{course[1]}}{{course[2]}}>
           <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
@@ -24,26 +21,18 @@
       <br>
       {% endif %}
     {% endfor %}
+  {%- endmacro %}
 
+
+  <p><b>1.&nbsp;&nbsp;&nbsp;Core CS Classes</b></p>  
+  
+  <form>
+      
+    <p>{{ show_classes(core_courses) }}</p>
+    
   <p><b>2.&nbsp;&nbsp;&nbsp;Advanced CS Classes</b></p>
   
-    {% for course in adv_courses %}
-      {% if course.adv_vers == None %}
-      <label for={{course[1]}}{{course[2]}}>
-          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
-            <span>{{course[0]}} {{course[1]}} {{course[2]}}
-            </span>
-        </label>
-      <br>      
-      {% else %}
-      <label for={{course[1]}}{{course[2]}}>
-          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
-            <span>{{course[0]}} {{course[1]}} {{course[2]}} or {{course[3][0]}} {{course[3][1]}} {{course[3][2]}}
-            </span>
-        </label>
-       <br>      
-      {% endif %}
-    {% endfor %}
+    <p>{{ show_classes(adv_courses) }}</p>    
   
   </form> 
     

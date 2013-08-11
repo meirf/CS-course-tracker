@@ -24,7 +24,7 @@ class MainPage(webapp2.RequestHandler):
                 DEFAULT_MEAL_SCHED_NAME)
 
         template_values = {
-            'courses' : courses,
+            'core_courses' : courses,
             'adv_courses': sorted(list(adv_courses), key=itemgetter(1, 2)),
             'meal_sched_name': urllib.quote_plus(meal_sched_name),
         }
