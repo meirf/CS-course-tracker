@@ -8,7 +8,7 @@
   {%- endmacro %}
 
   {% macro display_requirement(req, double=False) -%}
-      <input type="checkbox" name={{ show_course_data(req) }} >
+      <input type="checkbox" name={{req.dept}}{{req.course_num}}{{req.title}} >
           {{ show_course_data(req) }}
               {% if double %}
                    or {{ show_course_data(req.adv_vers) }}
@@ -26,7 +26,7 @@
     {% endfor %}
   {%- endmacro %}
 
-  <form action="/taken?guestbook_name={{ guestbook_name }}" method="get">
+  <form action="/taken?" method="get">
       
       <div><input type="submit" value="Track"></div>
 
