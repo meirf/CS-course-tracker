@@ -55,8 +55,7 @@ class Verify2Google(webapp2.RequestHandler):
 class Test(webapp2.RequestHandler):
 
     def get(self):
-        return webapp2.Response(self.request.get('gbk_name', 'hello, world'))
-        #return webapp2.Response(str(get_url_param_mappings(str(self.request))))
+        return webapp2.Response(str(get_url_param_mappings(str(self.request))))
 
 application = webapp2.WSGIApplication(
     [('/', MainPage),

@@ -3,33 +3,32 @@
 <html>
   <body>   
 
+  {% macro show_course_data(course) -%}
+      {{course.dept}} {{course.course_num}} {{course.title}}
+  {%- endmacro %}
+
+  {% macro display_requirement(req, double=False) -%}
+      <input type="checkbox" name={{ show_course_data(req) }} >
+          {{ show_course_data(req) }}
+              {% if double %}
+                   or {{ show_course_data(req.adv_vers) }}
+              {% endif %}
+      </input>
+  {%- endmacro %}
+
   {% macro show_classes(course_list) -%}
-    {% for course in course_list %}
-      {% if course.adv_vers == None %}
-        <label for={{course[1]}}{{course[2]}}>
-          <input id='abc' name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
-            <span>{{course[0]}} {{course[1]}} {{course[2]}}
-            </span>
-        </label>
-      <br>
+    {% for course in course_list %}   
+      {% if not course.adv_vers %}
+        {{  display_requirement(course) }} <br>
       {% else %}
-      <label for={{course[1]}}{{course[2]}}>
-          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
-            <span>{{course[0]}} {{course[1]}} {{course[2]}} or {{course[3][0]}} {{course[3][1]}} {{course[3][2]}}
-            </span>
-        </label>
-      <br>
+        {{  display_requirement(course, double=True) }} <br>
       {% endif %}
     {% endfor %}
   {%- endmacro %}
 
   <form action="/taken?guestbook_name={{ guestbook_name }}" method="get">
       
-      <input type="checkbox" name={{ guestbook_name }}>
-        some text
-      </input>
-
-      <div><input type="submit" value="Sign Guestbook"></div>
+      <div><input type="submit" value="Track"></div>
 
   <p><b>1.&nbsp;&nbsp;&nbsp;Core CS Classes</b></p>  
      

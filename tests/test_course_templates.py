@@ -33,11 +33,24 @@ class TestTrackFull(unittest.TestCase):
 class TestUrlDecode(unittest.TestCase):
 
     x = "GET /taken?content=hey!!&a=xyz HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36 X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 X-Appengine-Country: US X-Appengine-Region: ca"
-    def test_url_decode(self):
+    def test_url_decode_2_params(self):
         self.failUnless(
             get_url_param_mappings(self.x)=={'content':'hey!!','a':'xyz'}
         )
-            
+        
+    y = "GET /taken?content=hey HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36 X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 X-Appengine-Country: US X-Appengine-Region: ca"
+    def test_url_decode_1_params(self):
+        self.failUnless(
+            get_url_param_mappings(self.y)=={'content':'hey'}
+        )
+
+    z = "GET /taken? HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36 X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 X-Appengine-Country: US X-Appengine-Region: ca"
+    def test_url_decode_0_params(self):
+        self.failUnless(
+            get_url_param_mappings(self.z)=={}
+        )
+
+
 
 
 def main():
