@@ -7,7 +7,7 @@
     {% for course in course_list %}
       {% if course.adv_vers == None %}
         <label for={{course[1]}}{{course[2]}}>
-          <input id={{course[1]}}{{course[2]}} name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
+          <input id='abc' name={{course[1]}}{{course[2]}} type="checkbox" value="1" />
             <span>{{course[0]}} {{course[1]}} {{course[2]}}
             </span>
         </label>
@@ -23,24 +23,24 @@
     {% endfor %}
   {%- endmacro %}
 
+  <form action="/taken?guestbook_name={{ guestbook_name }}" method="get">
+      
+      <input type="checkbox" name={{ guestbook_name }}>
+        some text
+      </input>
+
+      <div><input type="submit" value="Sign Guestbook"></div>
 
   <p><b>1.&nbsp;&nbsp;&nbsp;Core CS Classes</b></p>  
-  
-  <form>
-      
+     
     <p>{{ show_classes(core_courses) }}</p>
-    
+
   <p><b>2.&nbsp;&nbsp;&nbsp;Advanced CS Classes</b></p>
   
-    <p>{{ show_classes(adv_courses) }}</p>    
+    <p>{{ show_classes(adv_courses) }}</p>      
   
-  </form> 
+  </form>    
     
-    <form></form>Meal Schedule name:
-      <input value="{{ meal_sched_name }}" name="meal_sched_name">
-      <input type="submit" value="switch">
-    </form>
-
   </body>
 </html>
 {% endautoescape %}
