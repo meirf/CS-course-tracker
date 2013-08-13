@@ -15,6 +15,10 @@ from url_manipulation.url_decode import get_url_param_mappings
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'])
 
+def get_rendering(var_mapping, html_file_name):
+    template = JINJA_ENVIRONMENT.get_template(html_file_name)
+    return template.render(var_mapping)    
+
 class MainPage(webapp2.RequestHandler):
 
     def get(self):       
@@ -23,9 +27,8 @@ class MainPage(webapp2.RequestHandler):
             'core_courses' : courses,
             'adv_courses': sorted(list(adv_courses), key=itemgetter(1, 2)),
         }
-
-        template = JINJA_ENVIRONMENT.get_template('index.html')
-        self.response.write(template.render(template_values))
+        
+        self.response.write(get_rendering(template_values, 'index.html'))
 
 class Verify2Google(webapp2.RequestHandler):
 
@@ -36,8 +39,11 @@ class Verify2Google(webapp2.RequestHandler):
 class DisplayTakenTrackInfo(webapp2.RequestHandler):
 
     def get(self):
-        taken_courses = str(get_url_param_mappings(str(self.request)).keys())
-        return webapp2.Response(taken_courses)
+        courses_taken = get_url_param_mappings(str(self.request)).keys()
+        template_values = {
+            'courses_taken' : courses_taken,
+        }
+        self.response.write(get_rendering(template_values, 'progress.html'))
 
 application = webapp2.WSGIApplication(
     [('/', MainPage),

@@ -6,7 +6,7 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: shab_sched.application
+  script: course_tracker_main.application
 
 libraries:
 - name: webapp2

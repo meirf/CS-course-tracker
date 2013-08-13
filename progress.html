@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+    {% for course in courses_taken %}   
+          {{ course }}<br>
+    {% endfor %}
+</body>
+</html>
+{% endautoescape %}
