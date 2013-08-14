@@ -99,5 +99,3 @@ adv_courses.add(Course('COMS',6901,'Projects in CS',None))
 adv_courses.add(Course('COMS',6902,'Thesis',None))
 adv_courses.add(Course('COMS',6998,'Topics in CS I',None))
 adv_courses.add(Course('COMS',6999,'Topics in CS II',None))
-
-

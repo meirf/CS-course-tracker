@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import unittest
-from course_listing import courses, adv_courses
+from course_listing import courses, adv_courses, Course
 from course_structures import CourseReq, TrackSubsection
 from course_rules import found_sec_A_courses, found_sec_B_courses
 from url_manipulation.url_decode import get_url_param_mappings
+from track_utils import is_fulfilled
 
 class CourseTest(unittest.TestCase):
 
@@ -50,8 +51,27 @@ class TestUrlDecode(unittest.TestCase):
             get_url_param_mappings(self.z)=={}
         )
 
+class TestTrackUtils(unittest.TestCase):
+
+    req_a = CourseReq("4901", ["COMS"], "Projects in CS", True, 2)
+    intro_honors = Course('COMS',1007,'Honors Intro to CS', None)
+    req_b = CourseReq("6232", ["COMS"], "Analysis of Algorithms II")
+    ana_algo_II = Course('COMS',6232,'Analysis of Algorithms II',None)
+
+    def test_single_fulfillment_return_correct_type(self):
+        self.failUnless(type(is_fulfilled(self.intro_honors, self.req_a)) is bool)
+
+    def test_single_fulfillment_result_non_match(self):
+        self.failIf(is_fulfilled(self.intro_honors, self.req_a))
+
+    def test_single_fulfillment_result_match(self):
+        self.failUnless(is_fulfilled(self.ana_algo_II, self.req_b))
 
 
+class TestCourseReqHashable(unittest.TestCase):
+
+    def test_hashable_CourseReq(self):
+        self.failUnless({CourseReq(1,2,3)})
 
 def main():
     unittest.main()
