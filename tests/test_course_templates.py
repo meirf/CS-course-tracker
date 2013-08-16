@@ -6,6 +6,9 @@ from course_structures import CourseReq, TrackSubsection
 from course_rules import found_sec_A_courses, found_sec_B_courses
 from url_manipulation.url_decode import get_url_param_mappings
 from track_utils import is_fulfilled
+from course_utils import get_convert_to_course
+
+#TODO divide file into multiple modules, divide functionality, similarity
 
 class CourseTest(unittest.TestCase):
 
@@ -67,6 +70,15 @@ class TestTrackUtils(unittest.TestCase):
     def test_single_fulfillment_result_match(self):
         self.failUnless(is_fulfilled(self.ana_algo_II, self.req_b))
 
+class TestCourseUtil(unittest.TestCase):
+
+    course_from_input = "COMS1004IntrotoCSandProginJava"
+    def test_get_convert_to_course(self):
+        self.failUnless(isinstance(get_convert_to_course(self.course_from_input), Course))
+ 
+    def test_course_fields(self):
+        crs = get_convert_to_course(self.course_from_input)
+        self.failUnless(crs.dept=='COMS' and crs.course_num=='1004' and crs.title == 'IntrotoCSandProginJava')        
 
 class TestCourseReqHashable(unittest.TestCase):
 

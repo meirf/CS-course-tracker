@@ -25,6 +25,7 @@ class TrackSubsection:
     def __init__(self, num_classes, minimum=True, course_reqs=[]):
         self.num_classes = num_classes
         self.minimum = minimum
+        self.course_reqs = course_reqs
 
 
 class Track:

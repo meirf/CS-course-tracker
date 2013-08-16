@@ -8,7 +8,7 @@
   {%- endmacro %}
 
   {% macro display_requirement(req, double=False) -%}
-      <input type="checkbox" name={{req.dept}}{{req.course_num}}{{req.title}} >
+      <input type="checkbox" name={{req.dept}}{{req.course_num}}{{req.title_no_spaces}} >
           {{ show_course_data(req) }}
               {% if double %}
                    or {{ show_course_data(req.adv_vers) }}
