@@ -3,20 +3,33 @@
 <html>
 <body>
 
-    {{ courses_taken }} 
-    {{ fulfilled }}
-    <table border="1">
-    <tr>
-    <th>Track Requirement</th>
-    <th>Satisfied</th>
-    </tr>
-    {% for course in courses_taken %}
-        <tr>
-            <td>row 1, cell 1</td>
-            <td>{{ course }}</td>
-        </tr>          
-    {% endfor %}   
-    </table>   
+    {% macro show_specific_track(fulfill_pairs) -%}
+        <table border="1">
+            <tr>
+                <th colspan="2"> {{ fulfill_pairs[0] }} </th>
+            </tr>
+            <tr>
+                <th>Track Requirement</th>
+                <th>Satisfied By</th>
+            </tr>
+            {% for sub_section in fulfill_pairs[1] %}
+                {% for req, match in sub_section.items() %}
+                    <tr>
+                        <td>{{ req }}</td>
+                        {% if match %}
+                            <td>{{ match }}</td>
+                        {% else %}
+                            <td> </td>
+                        {% endif %}
+                    </tr>       
+                {% endfor %}
+            {% endfor %}
+        </table>
+    {%- endmacro %}
+
+    {% for track_pairs in fulfill_pairs_list %}
+        {{ show_specific_track(track_pairs) }}
+    {% endfor %}
     
 </body>
 </html>

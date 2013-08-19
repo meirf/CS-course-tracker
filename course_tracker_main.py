@@ -6,6 +6,7 @@ from course_listing import courses
 from course_listing import adv_courses
 from operator import attrgetter
 from url_manipulation.url_decode import get_url_param_mappings
+from compute_fulfill_main import get_all_track_fulfillments
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'])
@@ -31,6 +32,7 @@ class DisplayTakenTrackInfo(webapp2.RequestHandler):
 
         template_values = {
             'courses_taken' : courses_taken,
+            'fulfill_pairs_list' : get_all_track_fulfillments(courses_taken),
         }
         self.response.write(get_rendering(template_values, 'progress.html'))
 
