@@ -12,9 +12,14 @@ from course_utils import get_convert_to_course
 
 class CourseTest(unittest.TestCase):
 
+    intro_honors = Course('COMS',1007,'Honors Intro to CS')
+    intro_basic = Course('COMS',1004,'Intro to CS and Prog in Java', intro_honors)
+    
     def test_course_import(self):
         self.failUnless(len(courses) > 0 and len(adv_courses) > 0)
 
+    def test_repr_course(self):
+        self.failUnless(repr(self.intro_basic)=='Course :  COMS 1004 Intro to CS and Prog in Java OR '+repr(self.intro_honors))
 
 class TestGeneralCourseReq(unittest.TestCase):
 

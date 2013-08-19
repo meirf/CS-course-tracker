@@ -6,6 +6,12 @@ class Course:
         self.adv_vers = adv_vers
         self.title_no_spaces = title.replace(' ','')
 
+    def __repr__(self):
+        rep = ' '.join([self.__class__.__name__, ": ", self.dept, str(self.course_num), self.title])
+        if self.adv_vers:
+            rep += " OR " + repr(self.adv_vers)
+        return rep
+
 courses = []
 
 intro_honors = Course('COMS',1007,'Honors Intro to CS')

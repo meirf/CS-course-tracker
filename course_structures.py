@@ -19,6 +19,9 @@ class CourseReq:
     def __hash__(self):
         return hash((self.prefix, self.title, self.adv_approv, self.multip))
 
+    def __repr__(self):
+        return '\n\t\t'.join([self.prefix, str(self.departments), self.title, 
+                        "Approval required: "+str(self.adv_approv), "mult:"+str(self.multip)])
 
 class TrackSubsection:
 
@@ -27,9 +30,15 @@ class TrackSubsection:
         self.minimum = minimum
         self.course_reqs = course_reqs
 
+    def __repr__(self):
+        return '\n\t'.join(['\n'+str(self.num_classes), "Min: "+str(self.minimum), repr(self.course_reqs)])
+
 
 class Track:
 
     def __init__(self, title, track_subs=[]):
         self.title = title
         self.track_subs = track_subs
+
+    def __repr__(self):
+        return '\n'.join([str(self.title), repr(self.track_subs)])

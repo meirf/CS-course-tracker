@@ -1,7 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-import cgi
-import urllib
 import os
 import jinja2
 import webapp2
@@ -10,8 +6,6 @@ from course_listing import courses
 from course_listing import adv_courses
 from operator import attrgetter
 from url_manipulation.url_decode import get_url_param_mappings
-from course_rules import found_track 
-from track_utils import get_track_req_fulf_pairs
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'])
@@ -23,19 +17,12 @@ def get_rendering(var_mapping, html_file_name):
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        #{{req.title_no_spaces}}
         template_values = {
             'core_courses' : courses,
             'adv_courses': sorted(list(adv_courses), key=attrgetter('course_num', 'title')),
         }
         
         self.response.write(get_rendering(template_values, 'index.html'))
-
-class Verify2Google(webapp2.RequestHandler):
-
-    def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('google-site-verification: google17bd46c295eec9f7.html')
 
 class DisplayTakenTrackInfo(webapp2.RequestHandler):
 
@@ -50,5 +37,4 @@ class DisplayTakenTrackInfo(webapp2.RequestHandler):
 application = webapp2.WSGIApplication(
     [('/', MainPage),
      ('/taken', DisplayTakenTrackInfo),
-     ('/google17bd46c295eec9f7.html', Verify2Google),
      ], debug=True)
