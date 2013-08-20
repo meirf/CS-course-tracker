@@ -3,29 +3,54 @@
 <html>
 <body>
 
-    {% macro show_specific_track(fulfill_pairs) -%}
+    {% macro print_sub_sec(sub_section_req_fulf_pairs)%}
+        {% for req, match in sub_section_req_fulf_pairs.items() %}
+            <tr>
+                <td>{{ req }}</td>
+                {% if match %}
+                    <td>{{ match }}</td>
+                {% else %}
+                    <td> </td>
+                {% endif %}
+            </tr>       
+        {% endfor %}
+    {% endmacro %}
+
+    {% macro print_track_sub_req_heading(minimum, num_sat, reqs) %}
+        <tr>
+           <th align="left">
+                {% set length = reqs|length %}
+                {% if length == num_sat %}
+                    {{num_sat}} required courses
+                {% else %}
+                    {% if minimum%}
+                        At least {{num_sat}} courses from this list
+                    {% else %}
+                        Up to {{num_sat}} courses from this list
+                    {% endif %}
+                {% endif %}
+            </th>
+        </tr>
+    {% endmacro %}
+
+    {% macro show_specific_track(fulfill_pairs) %}
+        {% set track = fulfill_pairs[0] %}
         <table border="1">
             <tr>
-                <th colspan="2"> {{ fulfill_pairs[0] }} </th>
+                <th colspan="2"> {{ track.title }} </th>
             </tr>
             <tr>
                 <th>Track Requirement</th>
                 <th>Satisfied By</th>
             </tr>
+            {% set i = 0 %}
             {% for sub_section in fulfill_pairs[1] %}
-                {% for req, match in sub_section.items() %}
-                    <tr>
-                        <td>{{ req }}</td>
-                        {% if match %}
-                            <td>{{ match }}</td>
-                        {% else %}
-                            <td> </td>
-                        {% endif %}
-                    </tr>       
-                {% endfor %}
+                {{ print_track_sub_req_heading(track.track_subs[i].minimum, track.track_subs[i].num_classes, track.track_subs[i].course_reqs) }}
+                {{ print_sub_sec(sub_section) }}
+                {% set i = i + 1 %}
             {% endfor %}
         </table>
-    {%- endmacro %}
+    {% endmacro %}
 
     {% for track_pairs in fulfill_pairs_list %}
         {{ show_specific_track(track_pairs) }}
