@@ -1,4 +1,4 @@
-shabb
+CS-course-tracker
 =====
 
 CS Major Progress Tracker for Columbia Students
