@@ -19,8 +19,8 @@ def get_track_req_fulf_pairs(track, courses_taken):
 #class TrackSubsection: num_classes, minimum=True, course_reqs=[]
 def get_track_sub_req_fulf_pairs(subsection, courses_taken):
     '''
-    return dict 
-    each key maps req to list of satisfying classes
+    Return dict: 
+            each key maps req to list of satisfying classes
     '''
     fulfs = dict( (req,[]) for req in subsection.course_reqs)
     count = 0
@@ -36,7 +36,7 @@ def get_track_sub_req_fulf_pairs(subsection, courses_taken):
 
 def is_fulfilled(course, requirement):
     '''
-    return true if courses matches req
+    Return true if courses matches req
     '''
     if course.title != requirement.title.replace(' ','') and course.title != requirement.title:
         return False

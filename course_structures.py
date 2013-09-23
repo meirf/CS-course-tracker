@@ -1,4 +1,11 @@
 class CourseReq:
+    """
+    A course requirement may only specify
+    the first 2 digits of a fulfilling
+    course's id. It specifies a DEPT, title
+    whether advisor approval is required and
+    how many times it may be fulfilled.
+    """
 
     def __init__(self, prefix, departments, title=None, 
                  adv_approv=False, multip=1):        
@@ -24,6 +31,10 @@ class CourseReq:
                         "Approval required: "+str(self.adv_approv), "mult:"+str(self.multip)])
 
 class TrackSubsection:
+    """
+    Each track has 2 to 5 subsections
+    with specific restrictions for their containing requirements
+    """
 
     def __init__(self, num_classes, minimum=True, course_reqs=[]):
         self.num_classes = num_classes

@@ -16,6 +16,9 @@ def get_rendering(var_mapping, html_file_name):
     return template.render(var_mapping)    
 
 class MainPage(webapp2.RequestHandler):
+    """
+    Retrieves courses data and displays main page.
+    """
 
     def get(self):
         template_values = {
@@ -26,6 +29,9 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(get_rendering(template_values, 'index.html'))
 
 class DisplayTakenTrackInfo(webapp2.RequestHandler):
+    """
+    Gets course requirement matching info.
+    """
 
     def get(self):
         courses_taken = get_url_param_mappings(str(self.request)).keys()

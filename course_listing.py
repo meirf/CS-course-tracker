@@ -1,4 +1,9 @@
 class Course:
+    """
+    Stores data of a CS course possibly 
+    including reference to advanced version
+    """
+
     def __init__(self, dept, course_num, title, adv_vers=None):
         self.dept = dept
         self.course_num = course_num
@@ -12,6 +17,14 @@ class Course:
             rep += " OR " + repr(self.adv_vers)
         return rep
 
+
+"""
+Two lists of both basic courses and advanced.
+Since size is small, db would not add much for efficiency.
+However, due to possibility of new course offering,
+db may be used for adding courses with admin page
+as a non-programmatic course addition/drop portal. 
+"""
 courses = []
 
 intro_honors = Course('COMS',1007,'Honors Intro to CS')
