@@ -3,9 +3,19 @@
 <html>
   <body>   
 
+  {# ***First page user sees when visiting site.
+     Allows user to indicate which courses they've taken.*** #}   
+
+
+  {# specific course with its department, course id, title #}     
+
   {% macro show_course_data(course) -%}
       {{course.dept}} {{course.course_num}} {{course.title}}
   {%- endmacro %}
+
+
+  {# display specific course with checkbox, 
+     posssibility that the requirement has an advanced version #}
 
   {% macro display_requirement(req, double=False) -%}
       <input type="checkbox" name={{req.dept}}{{req.course_num}}{{req.title_no_spaces}} >
@@ -15,6 +25,10 @@
               {% endif %}
       </input>
   {%- endmacro %}
+
+
+  {# show the courses in a course list 
+     ensure display advanced version if exists  #}
 
   {% macro show_classes(course_list) -%}
     {% for course in course_list %}   
@@ -29,10 +43,14 @@
   <form action="/taken?" method="get">
       
       <div><input type="submit" value="Track"></div>
-
+  
+  {# Display courses all majors must take #}
+  
   <p><b>1.&nbsp;&nbsp;&nbsp;Core CS Classes</b></p>  
      
     <p>{{ show_classes(core_courses) }}</p>
+
+  {# Display advanced courses most of which are specific to a few tracks #}  
 
   <p><b>2.&nbsp;&nbsp;&nbsp;Advanced CS Classes</b></p>
   

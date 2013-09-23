@@ -3,6 +3,12 @@
 <html>
 <body>
 
+    {# ***Results page after submission of courses taken.
+       Shows progress for each CS track.*** #}
+
+    
+    {# for each rule print what class if any fulfilled it #}
+      
     {% macro print_sub_sec(sub_section_req_fulf_pairs)%}
         {% for req, match in sub_section_req_fulf_pairs.items() %}
             <tr>
@@ -15,6 +21,9 @@
             </tr>       
         {% endfor %}
     {% endmacro %}
+
+    
+    {# Show general course requirements for track subsection #}
 
     {% macro print_track_sub_req_heading(minimum, num_sat, reqs) %}
         <tr>
@@ -32,6 +41,9 @@
             </th>
         </tr>
     {% endmacro %}
+
+    
+    {# show all progress info for specific track #}
 
     {% macro show_specific_track(fulfill_pairs) %}
         {% set track = fulfill_pairs[0] %}
@@ -51,6 +63,9 @@
             {% endfor %}
         </table>
     {% endmacro %}
+
+
+    {# for each track, display progress #}
 
     {% for track_pairs in fulfill_pairs_list %}
         {{ show_specific_track(track_pairs) }}
