@@ -2,8 +2,8 @@ import os
 import jinja2
 import webapp2
 
-from course_listing import courses
-from course_listing import adv_courses
+from cs_course_pool.advanced_courses import courses
+from cs_course_pool.core_courses import adv_courses
 from operator import attrgetter
 from url_manipulation.url_decode import get_url_param_mappings
 from compute_fulfill_main import get_all_track_fulfillments
