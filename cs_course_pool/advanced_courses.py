@@ -1,5 +1,11 @@
 from course_listing import Course
 
+"""
+Set of all advanced courses offered by department,
+subset of which can be applied to each track.
+
+"""
+
 adv_courses = set()
 
 aml_advanced = Course('COMS', 6772, 'Adv Machine Learning')
@@ -9,7 +15,7 @@ adv_courses.add(aml_basic)
 adv_courses.add(aml_advanced)
 
 bio_adv = Course('COMS', 6737, 'Biometrics')
-bio_basic = Course('COMS', 4737, 'Biometrics',bio_adv)
+bio_basic = Course('COMS', 4737, 'Biometrics', bio_adv)
 
 adv_courses.add(bio_basic)
 adv_courses.add(bio_adv)

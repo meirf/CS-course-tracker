@@ -1,6 +1,6 @@
 class Course:
     """
-    Stores data of a CS course possibly 
+    Stores data of a CS course, possibly
     including reference to advanced version
     """
 
