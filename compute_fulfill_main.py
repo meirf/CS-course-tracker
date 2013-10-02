@@ -1,6 +1,6 @@
 import track_utils
 import course_utils
-from course_rules import found_track
+from track_requirements.foundations import found_track
 
 # currently only checking progress on foundations track
 tracks = [found_track]
