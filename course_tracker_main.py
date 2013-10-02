@@ -6,7 +6,7 @@ from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
 from operator import attrgetter
 from url_manipulation.url_decode import get_url_param_mappings
-from compute_fulfill_main import get_all_track_fulfillments
+from matching_utils.compute_fulfill_main import get_all_track_fulfillments
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'])

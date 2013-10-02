@@ -5,7 +5,7 @@ from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
 from cs_course_pool.course_listing import Course
 from course_structures import CourseReq, TrackSubsection
-from course_rules import found_sec_A_courses, found_sec_B_courses
+from track_requirements.foundations import found_sec_A_courses, found_sec_B_courses
 from url_manipulation.url_decode import get_url_param_mappings
 from track_utils import is_fulfilled
 from course_utils import get_convert_to_course
@@ -22,7 +22,7 @@ class CourseTest(unittest.TestCase):
         self.failUnless(len(courses) > 0 and len(adv_courses) > 0)
 
     def test_repr_course(self):
-        self.failUnless(repr(self.intro_basic)=='Course :  COMS 1004 Intro to CS and Prog in Java OR '
+        self.failUnless(repr(self.intro_basic) == 'Course :  COMS 1004 Intro to CS and Prog in Java OR '
                         + repr(self.intro_honors))
 
 
@@ -55,7 +55,7 @@ class TestUrlDecode(unittest.TestCase):
 
     def test_url_decode_2_params(self):
         self.failUnless(
-            get_url_param_mappings(self.x)=={'content': 'hey!!', 'a': 'xyz'}
+            get_url_param_mappings(self.x) == {'content': 'hey!!', 'a': 'xyz'}
         )
         
     y = "GET /taken?content=hey HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 " \
@@ -86,7 +86,7 @@ class TestTrackUtils(unittest.TestCase):
     req_a = CourseReq("4901", ["COMS"], "Projects in CS", True, 2)
     intro_honors = Course('COMS', 1007, 'Honors Intro to CS', None)
     req_b = CourseReq("6232", ["COMS"], "Analysis of Algorithms II")
-    ana_algo_II = Course('COMS', 6232, 'Analysis of Algorithms II',None)
+    ana_algo_II = Course('COMS', 6232, 'Analysis of Algorithms II', None)
 
     def test_single_fulfillment_return_correct_type(self):
         self.failUnless(type(is_fulfilled(self.intro_honors, self.req_a)) is bool)
@@ -101,6 +101,7 @@ class TestTrackUtils(unittest.TestCase):
 class TestCourseUtil(unittest.TestCase):
 
     course_from_input = "COMS1004IntrotoCSandProginJava"
+
     def test_get_convert_to_course(self):
         self.failUnless(isinstance(get_convert_to_course(self.course_from_input), Course))
  
@@ -111,7 +112,7 @@ class TestCourseUtil(unittest.TestCase):
 
 class TestCourseReqHashable(unittest.TestCase):
 
-    def test_hashable_CourseReq(self):
+    def test_hashable_coursereq(self):
         self.failUnless({CourseReq(1, 2, 3)})
 
 
