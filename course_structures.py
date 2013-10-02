@@ -7,8 +7,7 @@ class CourseReq:
     how many times it may be fulfilled.
     """
 
-    def __init__(self, prefix, departments, title=None, 
-                 adv_approv=False, multip=1):        
+    def __init__(self, prefix, departments, title=None, adv_approv=False, multip=1):
         self.prefix = prefix
         self.departments = departments
         self.title = title
@@ -16,19 +15,15 @@ class CourseReq:
         self.multip = multip
 
     def __eq__(self, other):
-        return all([other.prefix == self.prefix, 
-               other.departments == self.departments,
-               other.title == self.title,
-               other.adv_approv == self.adv_approv,
-               other.multip == self.multip
-               ])
+        return all([other.prefix == self.prefix, other.departments == self.departments, other.title == self.title,
+                    other.adv_approv == self.adv_approv, other.multip == self.multip ])
 
     def __hash__(self):
         return hash((self.prefix, self.title, self.adv_approv, self.multip))
 
     def __repr__(self):
-        return '\n\t\t'.join([self.prefix, str(self.departments), self.title, 
-                        "Approval required: "+str(self.adv_approv), "mult:"+str(self.multip)])
+        return '\n\t\t'.join([self.prefix, str(self.departments), self.title, "Approval required: "
+                                                   +str(self.adv_approv), "mult:"+str(self.multip)])
 
 class TrackSubsection:
     """

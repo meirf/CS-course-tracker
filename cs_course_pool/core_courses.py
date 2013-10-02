@@ -1,3 +1,5 @@
+from course_listing import Course
+
 """
 Two lists of both basic courses and advanced.
 Since size is small, db would not add much for efficiency.

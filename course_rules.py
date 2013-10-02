@@ -1,11 +1,7 @@
 from course_structures import CourseReq, TrackSubsection, Track
 
-track_names = ("Foundations of Computer Science", 
-                "Software Systems",
-                "Digital Systems",
-                "Artificial Intelligence",
-                "Applications",
-                "Vision and Graphics")
+track_names = ("Foundations of Computer Science", "Software Systems", "Digital Systems",
+               "Artificial Intelligence", "Applications", "Vision and Graphics")
 
 
 '''
