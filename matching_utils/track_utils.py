@@ -1,38 +1,29 @@
-# TODO make dict that keeps of track which req are fulfilled by which courses
-# course_req : [course_a, course_b]
+"""
+Gathers data on which requirements are fulfilled by which taken courses
+"""
 
 
-#class Track: title, track_subs=[]
 def get_track_req_fulf_pairs(track, courses_taken):
     """
-    Return list of dicts
-    each dict maps req to list of courses
+    Return list of dicts, each dict { req -> list of satisfying classes }
     """
-    fulfillments = [get_track_sub_req_fulf_pairs(track.track_subs[0], courses_taken),
-                    get_track_sub_req_fulf_pairs(track.track_subs[1], courses_taken)]
-    return fulfillments
-    #for subsection in track.track_subs:
-    #    sub_fulf_pairs = get_track_sub_req_fulf_pairs(subsection, courses_taken)
-    #    fulfillments.append(sub_fulf_pairs)
-    #return fulfillments
+    return [get_track_sub_req_fulf_pairs(subsection, courses_taken) for subsection in track.track_subs]
 
 
-#class TrackSubsection: num_classes, minimum=True, course_reqs=[]
 def get_track_sub_req_fulf_pairs(subsection, courses_taken):
     """
-    Return dict: 
-            each key maps req to list of satisfying classes
+    Return dict: { req -> list of satisfying classes }
     """
-    fulfs = dict((req, []) for req in subsection.course_reqs)
-    count = 0
-    index = 0
-    while index < len(subsection.course_reqs) and count < subsection.num_classes:
-        course_req = subsection.course_reqs[index]
-        index += 1
-        for course_taken in courses_taken:
-            if is_fulfilled(course_taken, course_req):
-                fulfs[course_req].append(course_taken)
-                count += 1
+    fulfs = {req: [] for req in subsection.course_reqs}
+    num_req_classes = 0
+    req_index = 0
+    while req_index < len(subsection.course_reqs) and num_req_classes < subsection.num_classes:
+        course_req = subsection.course_reqs[req_index]
+        req_index += 1
+        for course in courses_taken:
+            if is_fulfilled(course, course_req):
+                fulfs[course_req].append(course)
+                num_req_classes += 1
     return fulfs
 
 
