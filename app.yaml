@@ -6,7 +6,7 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: course_tracker_main.application
+  script: handler_htmls.course_tracker_main.application
 
 libraries:
 - name: webapp2
