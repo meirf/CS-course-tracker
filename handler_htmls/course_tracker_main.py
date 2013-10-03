@@ -33,14 +33,13 @@ class MainPage(webapp2.RequestHandler):
 
 class DisplayTakenTrackInfo(webapp2.RequestHandler):
     """
-    Gets course requirement matching info.
+    Gets course requirement matching info for progress display page.
     """
 
     def get(self):
         courses_taken = get_url_param_mappings(str(self.request)).keys()
 
         template_values = {
-            'courses_taken': courses_taken,
             'fulfill_pairs_list': get_all_track_fulfillments(courses_taken),
         }
         self.response.write(get_rendering(template_values, 'progress.html'))
