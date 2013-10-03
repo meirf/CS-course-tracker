@@ -19,7 +19,4 @@ def get_convert_to_course(course_taken_string_from_checkbox):
 
 
 def get_conversion_for_all_inputted_elements(list_of_taken):
-    courses = []
-    for taken in list_of_taken:
-        courses.append(get_convert_to_course(taken))
-    return courses
+    return [get_convert_to_course(taken) for taken in list_of_taken]
