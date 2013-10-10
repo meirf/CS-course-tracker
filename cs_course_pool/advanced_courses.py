@@ -1,4 +1,4 @@
-from course_listing import Course
+from course_template import Course
 
 """
 Set of all advanced courses offered by department,

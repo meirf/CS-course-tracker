@@ -1,5 +1,5 @@
 import re
-from cs_course_pool.course_listing import Course
+from cs_course_pool.course_template import Course
 
 
 def get_convert_to_course(course_taken_string_from_checkbox):
@@ -8,7 +8,7 @@ def get_convert_to_course(course_taken_string_from_checkbox):
     so that  course.title == course.title_no_spaces
 
         DEPT     CNUM TITLE
-    '([A-Z]{4})(\d{4})(\w*)'
+    '([A-Z]{4})(\d{4})(\S*)'
 
     """
     match = re.search('([A-Z]{4})(\d{4})(\S*)', course_taken_string_from_checkbox)

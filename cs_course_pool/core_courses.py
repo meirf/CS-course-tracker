@@ -1,4 +1,4 @@
-from course_listing import Course
+from course_template import Course
 
 """ List of all core classes required for all track. """
 

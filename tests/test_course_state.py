@@ -3,7 +3,7 @@
 import unittest
 from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
-from cs_course_pool.course_listing import Course
+from cs_course_pool.course_template import Course
 from track_requirements.course_structures import CourseReq, TrackSubsection
 from track_requirements.foundations import found_sec_A_courses, found_sec_B_courses
 
