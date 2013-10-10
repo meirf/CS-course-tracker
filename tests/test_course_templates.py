@@ -113,11 +113,3 @@ class TestCourseReqHashable(unittest.TestCase):
 
     def test_hashable_coursereq(self):
         self.failUnless({CourseReq(1, 2, 3)})
-
-
-#def main():
-#    unittest.main()
-
-
-#if __name__ == '__main__':
-#    main()
