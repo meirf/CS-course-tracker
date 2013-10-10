@@ -18,30 +18,31 @@ class CourseTest(unittest.TestCase):
         self.intro_basic = Course('COMS', 1004, 'Intro to CS and Prog in Java', self.intro_honors)
     
     def test_course_import(self):
-        self.failUnless(len(courses) > 0 and len(adv_courses) > 0)
+        self.assertGreater(len(courses), 0)
+        self.assertGreater(len(adv_courses), 0)
 
     def test_repr_course(self):
-        self.failUnless(repr(self.intro_basic) == 'Course :  COMS 1004 Intro to CS and Prog in Java OR '
+        self.assertEqual(repr(self.intro_basic), 'Course :  COMS 1004 Intro to CS and Prog in Java OR '
                         + repr(self.intro_honors))
 
 
 class TestGeneralCourseReq(unittest.TestCase):
 
     def test_course_req_creation(self):
-        self.failUnless(CourseReq('41', ['COMS']))
+        self.assertIsNotNone(CourseReq('41', ['COMS']))
 
 
 class TestTrackSubsection(unittest.TestCase):
 
     def test_track_subsection(self):
-        self.failUnless(TrackSubsection(5, None, None))
+        self.assertIsNotNone(TrackSubsection(5, None, None))
 
 
 class TestTrackFull(unittest.TestCase):
 
     def test_foundations_class_size(self):
-        self.failUnless(len(found_sec_A_courses) == 3
-                        and len(found_sec_B_courses) == 16)
+        self.assertEqual(len(found_sec_A_courses), 3)
+        self.assertEqual(len(found_sec_B_courses), 16)
 
 
 class TestUrlDecode(unittest.TestCase):
@@ -52,19 +53,13 @@ class TestUrlDecode(unittest.TestCase):
         self.z = "GET /taken? HTTP/1.1 Accept: text/html,application/"
 
     def test_url_decode_2_params(self):
-        self.failUnless(
-            get_url_param_mappings(self.x) == {'content': 'hey!!', 'a': 'xyz'}
-        )
+        self.assertEqual(get_url_param_mappings(self.x), {'content': 'hey!!', 'a': 'xyz'})
 
     def test_url_decode_1_params(self):
-        self.failUnless(
-            get_url_param_mappings(self.y) == {'content': 'hey'}
-        )
+        self.assertEqual(get_url_param_mappings(self.y), {'content': 'hey'})
 
     def test_url_decode_0_params(self):
-        self.failUnless(
-            get_url_param_mappings(self.z) == {}
-        )
+        self.assertEqual(get_url_param_mappings(self.z), {})
 
 
 class TestTrackUtils(unittest.TestCase):
@@ -77,13 +72,13 @@ class TestTrackUtils(unittest.TestCase):
         self.ana_algo_II = Course('COMS', 6232, 'Analysis of Algorithms II', None)
 
     def test_single_fulfillment_return_correct_type(self):
-        self.failUnless(type(is_fulfilled(self.intro_honors, self.req_a)) is bool)
+        self.assertIsInstance(is_fulfilled(self.intro_honors, self.req_a) , int)
 
     def test_single_fulfillment_result_non_match(self):
-        self.failIf(is_fulfilled(self.intro_honors, self.req_a))
+        self.assertFalse(is_fulfilled(self.intro_honors, self.req_a))
 
     def test_single_fulfillment_result_match(self):
-        self.failUnless(is_fulfilled(self.ana_algo_II, self.req_b))
+        self.assertTrue(is_fulfilled(self.ana_algo_II, self.req_b))
 
 
 class TestCourseUtil(unittest.TestCase):
@@ -92,14 +87,16 @@ class TestCourseUtil(unittest.TestCase):
         self.course_from_input = "COMS1004IntrotoCSandProginJava"
 
     def test_get_convert_to_course(self):
-        self.failUnless(isinstance(get_convert_to_course(self.course_from_input), Course))
+        self.assertIsInstance(get_convert_to_course(self.course_from_input), Course)
  
     def test_course_fields(self):
         crs = get_convert_to_course(self.course_from_input)
-        self.failUnless(crs.dept == 'COMS' and crs.course_num == '1004' and crs.title == 'IntrotoCSandProginJava')
+        self.assertEqual(crs.dept, 'COMS')
+        self.assertEqual(crs.course_num, '1004')
+        self.assertEqual(crs.title, 'IntrotoCSandProginJava')
 
 
 class TestCourseReqHashable(unittest.TestCase):
 
     def test_hashable_coursereq(self):
-        self.failUnless({CourseReq(1, 2, 3)})
+        self.assertIsNotNone({CourseReq(1, 2, 3)})
