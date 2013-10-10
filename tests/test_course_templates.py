@@ -13,8 +13,9 @@ from matching_utils.course_utils import get_convert_to_course
 
 class CourseTest(unittest.TestCase):
 
-    intro_honors = Course('COMS', 1007, 'Honors Intro to CS')
-    intro_basic = Course('COMS', 1004, 'Intro to CS and Prog in Java', intro_honors)
+    def setUp(self):
+        self.intro_honors = Course('COMS', 1007, 'Honors Intro to CS')
+        self.intro_basic = Course('COMS', 1004, 'Intro to CS and Prog in Java', self.intro_honors)
     
     def test_course_import(self):
         self.failUnless(len(courses) > 0 and len(adv_courses) > 0)
@@ -45,34 +46,20 @@ class TestTrackFull(unittest.TestCase):
 
 class TestUrlDecode(unittest.TestCase):
 
-    x = "GET /taken?content=hey!!&a=xyz HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;" \
-        "q=0.8 Accept-Language: en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ " \
-        "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) " \
-        "Chrome/28.0.1500.71 Safari/537.36 X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108," \
-        "-121.955236 X-Appengine-Country: US X-Appengine-Region: ca"
+    def setUp(self):
+        self.x = "GET /taken?content=hey!!&a=xyz HTTP/1.1 Accept: text/html,application/"
+        self.y = "GET /taken?content=hey HTTP/1.1 Accept: text/html,application/"
+        self.z = "GET /taken? HTTP/1.1 Accept: text/html,application/"
 
     def test_url_decode_2_params(self):
         self.failUnless(
             get_url_param_mappings(self.x) == {'content': 'hey!!', 'a': 'xyz'}
         )
-        
-    y = "GET /taken?content=hey HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 " \
-        "Accept-Language: en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: " \
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 " \
-        "Safari/537.36 X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 " \
-        "X-Appengine-Country: US X-Appengine-Region: ca"
 
     def test_url_decode_1_params(self):
         self.failUnless(
             get_url_param_mappings(self.y) == {'content': 'hey'}
         )
-
-    z = "GET /taken? HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 " \
-        "Accept-Language:" \
-        " en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: Mozilla/5.0" \
-        " (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36" \
-        " X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 X-Appengine-Country: " \
-        "US X-Appengine-Region: ca"
 
     def test_url_decode_0_params(self):
         self.failUnless(
@@ -82,10 +69,12 @@ class TestUrlDecode(unittest.TestCase):
 
 class TestTrackUtils(unittest.TestCase):
 
-    req_a = CourseReq("4901", ["COMS"], "Projects in CS", True, 2)
-    intro_honors = Course('COMS', 1007, 'Honors Intro to CS', None)
-    req_b = CourseReq("6232", ["COMS"], "Analysis of Algorithms II")
-    ana_algo_II = Course('COMS', 6232, 'Analysis of Algorithms II', None)
+
+    def setUp(self):
+        self.req_a = CourseReq("4901", ["COMS"], "Projects in CS", True, 2)
+        self.intro_honors = Course('COMS', 1007, 'Honors Intro to CS', None)
+        self.req_b = CourseReq("6232", ["COMS"], "Analysis of Algorithms II")
+        self.ana_algo_II = Course('COMS', 6232, 'Analysis of Algorithms II', None)
 
     def test_single_fulfillment_return_correct_type(self):
         self.failUnless(type(is_fulfilled(self.intro_honors, self.req_a)) is bool)
@@ -99,7 +88,8 @@ class TestTrackUtils(unittest.TestCase):
 
 class TestCourseUtil(unittest.TestCase):
 
-    course_from_input = "COMS1004IntrotoCSandProginJava"
+    def setUp(self):
+        self.course_from_input = "COMS1004IntrotoCSandProginJava"
 
     def test_get_convert_to_course(self):
         self.failUnless(isinstance(get_convert_to_course(self.course_from_input), Course))
