@@ -4,14 +4,12 @@ import unittest
 from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
 from cs_course_pool.course_listing import Course
-from course_structures import CourseReq, TrackSubsection
+from track_requirements.course_structures import CourseReq, TrackSubsection
 from track_requirements.foundations import found_sec_A_courses, found_sec_B_courses
 from url_manipulation.url_decode import get_url_param_mappings
-from track_utils import is_fulfilled
-from course_utils import get_convert_to_course
+from matching_utils.track_utils import is_fulfilled
+from matching_utils.course_utils import get_convert_to_course
 
-
-#TODO divide file into multiple modules, divide functionality, similarity
 
 class CourseTest(unittest.TestCase):
 
@@ -35,7 +33,7 @@ class TestGeneralCourseReq(unittest.TestCase):
 class TestTrackSubsection(unittest.TestCase):
 
     def test_track_subsection(self):
-        self.failUnless(TrackSubsection(5))
+        self.failUnless(TrackSubsection(5, None, None))
 
 
 class TestTrackFull(unittest.TestCase):
@@ -69,7 +67,8 @@ class TestUrlDecode(unittest.TestCase):
             get_url_param_mappings(self.y) == {'content': 'hey'}
         )
 
-    z = "GET /taken? HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language:" \
+    z = "GET /taken? HTTP/1.1 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 " \
+        "Accept-Language:" \
         " en-US,en;q=0.8 Host: shobbus.appspot.com Referer: http://shobbus.appspot.com/ User-Agent: Mozilla/5.0" \
         " (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36" \
         " X-Appengine-City: santa clara X-Appengine-Citylatlong: 37.354108,-121.955236 X-Appengine-Country: " \
