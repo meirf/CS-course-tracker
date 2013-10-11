@@ -22,7 +22,7 @@ class Course:
         return hash((self.dept, self.course_num, self.title_no_spaces, self.adv_vers))
 
     def __repr__(self):
-        rep = ' '.join([self.__class__.__name__, ": ", self.dept, str(self.course_num), self.title])
+        rep = ' '.join([self.__class__.__name__, ": ", self.dept, self.course_num, self.title])
         if self.adv_vers:
             rep += " OR " + repr(self.adv_vers)
         return rep

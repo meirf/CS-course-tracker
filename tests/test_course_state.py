@@ -11,8 +11,8 @@ from track_requirements.foundations import found_sec_A_courses, found_sec_B_cour
 class CourseTest(unittest.TestCase):
 
     def setUp(self):
-        self.intro_honors = Course('COMS', 1007, 'Honors Intro to CS')
-        self.intro_basic = Course('COMS', 1004, 'Intro to CS and Prog in Java', self.intro_honors)
+        self.intro_honors = Course('COMS', "1007", 'Honors Intro to CS')
+        self.intro_basic = Course('COMS', "1004", 'Intro to CS and Prog in Java', self.intro_honors)
     
     def test_course_import(self):
         """

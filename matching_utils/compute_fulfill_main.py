@@ -1,7 +1,8 @@
+from cs_course_pool.course_template import Course
 import track_utils
 import course_utils
 from track_requirements.foundations import found_track
-from cs_course_pool.core_courses import courses
+from cs_course_pool.core_courses import courses as core_courses
 
 # currently only checking progress on foundations track
 tracks = [found_track]
@@ -20,9 +21,10 @@ def get_unfulfilled_core_classes(courses_taken):
     """
     Returns core classes that have not been taken
     """
-    core_classes_pool = set(courses)
+    core_classes_pool = set(core_courses)
     core_classes_taken = set()
-    for core_course in courses:
+
+    for core_course in core_courses:
         for course_took in courses_taken:
             if core_course == course_took:
                 core_classes_taken.add(core_course)

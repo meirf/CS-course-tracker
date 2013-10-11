@@ -35,4 +35,4 @@ def is_fulfilled(course, requirement):
         return False
     if course.dept not in requirement.departments:
         return False
-    return str(course.course_num).startswith(requirement.prefix)
+    return course.course_num.startswith(requirement.prefix)
