@@ -72,7 +72,8 @@ class TestCoreClassesNotFulfilled(unittest.TestCase):
 
     def test_core_classes_not_taken_not_none(self):
         self.assertIsNotNone(get_unfulfilled_core_classes(self.courses_taken))
-        #self.assertNotEqual(get_unfulfilled_core_classes(self.courses_taken), {})
+        self.assertNotEqual(get_unfulfilled_core_classes(self.courses_taken), {})
+        self.assertEqual(len(get_unfulfilled_core_classes(self.courses_taken)), 8-3)
 
 class CourseEqualMatcher(unittest.TestCase):
     """

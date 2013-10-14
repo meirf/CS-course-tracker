@@ -6,8 +6,7 @@
     {# ***Results page after submission of courses taken.
        Shows progress for each CS track.*** #}
 
-    {{ str_self_request }}
-    
+
     {# for each rule print what class if any fulfilled it #}
       
     {% macro print_sub_sec(sub_section_req_fulf_pairs)%}
@@ -64,6 +63,17 @@
             {% endfor %}
         </table>
     {% endmacro %}
+
+    {# display each unfulfilled core class #}
+
+    {% if unfulfilled_core_classes%}
+        <b>Unfulfilled Core Classes (required for all tracks): </b>
+        {% for unfulfilled_class in unfulfilled_core_classes %}
+        <ul>
+            <li>{{ unfulfilled_class }}</li>
+        </ul>
+        {% endfor %}
+    {% endif %}
 
 
     {# for each track, display progress #}

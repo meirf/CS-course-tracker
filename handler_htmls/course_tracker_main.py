@@ -5,8 +5,9 @@ import webapp2
 from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
 from operator import attrgetter
+from matching_utils import course_utils
 from url_manipulation.url_decode import get_url_param_mappings
-from matching_utils.compute_fulfill_main import get_all_track_fulfillments
+from matching_utils.compute_fulfill_main import get_all_track_fulfillments, get_unfulfilled_core_classes
 
 JINJA_ENVIRONMENT = \
     jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'])
@@ -37,10 +38,11 @@ class DisplayTakenTrackInfo(webapp2.RequestHandler):
     """
 
     def get(self):
-        courses_taken = get_url_param_mappings(str(self.request)).keys()
-
+        courses_taken_preformatted = get_url_param_mappings(str(self.request)).keys()
+        courses_taken = course_utils.get_conversion_for_all_inputted_elements(courses_taken_preformatted)
         template_values = {
             'fulfill_pairs_list': get_all_track_fulfillments(courses_taken),
+            'unfulfilled_core_classes': get_unfulfilled_core_classes(courses_taken),
         }
         self.response.write(get_rendering(template_values, 'progress.html'))
 

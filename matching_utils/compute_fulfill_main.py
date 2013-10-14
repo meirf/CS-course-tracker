@@ -8,12 +8,11 @@ from cs_course_pool.core_courses import courses as core_courses
 tracks = [found_track]
 
 
-def get_all_track_fulfillments(courses_taken_input):
+def get_all_track_fulfillments(courses_taken):
     """
     Returns for each track the courses taken that match
     the requirements for that track (including all track subsections.)
     """
-    courses_taken = course_utils.get_conversion_for_all_inputted_elements(courses_taken_input)
     return [(track, track_utils.get_track_req_fulf_pairs(track, courses_taken)) for track in tracks]
 
 
