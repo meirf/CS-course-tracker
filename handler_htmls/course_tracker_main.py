@@ -1,6 +1,7 @@
 import os
 import jinja2
 import webapp2
+import string
 
 from cs_course_pool.core_courses import courses
 from cs_course_pool.advanced_courses import adv_courses
@@ -47,6 +48,7 @@ class DisplayTakenTrackInfo(webapp2.RequestHandler):
             'unfulfilled_core_classes': unfulfilled_core_classes,
             'fulfill_pairs_list': fulfill_pairs_list,
             'remaining_course_count_requirement_per_tracksub': remaining_course_count_requirement_per_tracksub,
+            'letters': string.uppercase,
         }
         self.response.write(get_rendering(template_values, 'progress.html'))
 

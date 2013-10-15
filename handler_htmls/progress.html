@@ -83,7 +83,20 @@
         {{ show_specific_track(track_pairs) }}
     {% endfor %}
 
-    {{remaining_course_count_requirement_per_tracksub}}
+    {# display how many more courses are required in each track subsection #}
+
+    {% for remaining_course_count_requirement in remaining_course_count_requirement_per_tracksub %}
+        {% set i = 0 %}
+        <ol>
+        {% for track_sub_count in remaining_course_count_requirement %}
+            <li>
+                Track Subsection {{ letters[i] }} requires {{ track_sub_count }} more courses
+            </li>
+            {% set i = i+1 %}
+        {% endfor %}
+        </ol>
+    {% endfor %}
+
 
 </body>
 </html>
