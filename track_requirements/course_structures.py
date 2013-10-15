@@ -1,3 +1,6 @@
+import string
+
+
 class CourseReq:
     """
     Note on prefix: A course requirement may only
@@ -35,6 +38,10 @@ class TrackSubsection:
         self.num_classes = num_classes
         self.minimum = minimum
         self.course_reqs = course_reqs
+        self.identifier = None
+
+    def set_id(self, identifier):
+        self.identifier = identifier
 
     def __repr__(self):
         return '\n\t'.join(['\n'+str(self.num_classes), "Min: "+str(self.minimum), repr(self.course_reqs)])
@@ -45,6 +52,13 @@ class Track:
     def __init__(self, title, track_subs):
         self.title = title
         self.track_subs = track_subs
+        self.set_ids()
+
+    def set_ids(self):
+        i = 0
+        for track in self.track_subs:
+            track.set_id(string.uppercase[i])
+            i += 1
 
     def __repr__(self):
         return '\n'.join([str(self.title), repr(self.track_subs)])

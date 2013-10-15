@@ -19,6 +19,24 @@ def get_all_track_fulfillments(courses_taken):
     return [(track, track_utils.get_track_req_fulf_pairs(track, courses_taken)) for track in tracks]
 
 
+def get_rem_req_count_per_tracksub(fulfill_pairs_list):
+    """
+    Returns list of elements;
+            each element is a list of counts;
+            each count is the number of remaining courses required in the
+            ith subsection where the count's index is the ith value in that element
+    """
+    rem_req_counts = []
+    for track, fulfillment in fulfill_pairs_list:
+        count_list = []
+        for i, sub_fulf in enumerate(fulfillment):
+            num_reqs_satisfied = len(filter(lambda x:len(sub_fulf[x])>0, sub_fulf.keys()))
+            count =  track.track_subs[i].num_classes - num_reqs_satisfied
+            count_list.append(count)
+        rem_req_counts.append(count_list)
+    return rem_req_counts
+
+
 def get_unfulfilled_core_classes(courses_taken):
     """
     Returns core classes that have not been taken

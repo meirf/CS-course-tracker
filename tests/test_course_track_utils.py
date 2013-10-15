@@ -6,7 +6,7 @@ from matching_utils.course_utils import get_convert_to_course
 from cs_course_pool.course_template import Course
 from cs_course_pool.core_courses import courses
 from track_requirements.course_structures import CourseReq
-from matching_utils.compute_fulfill_main import get_unfulfilled_core_classes
+from matching_utils.compute_fulfill_main import get_unfulfilled_core_classes, get_all_track_fulfillments, get_rem_req_count_per_tracksub
 from url_manipulation.url_decode import get_url_param_mappings
 from matching_utils import course_utils
 
@@ -74,6 +74,13 @@ class TestCoreClassesNotFulfilled(unittest.TestCase):
         self.assertIsNotNone(get_unfulfilled_core_classes(self.courses_taken))
         self.assertNotEqual(get_unfulfilled_core_classes(self.courses_taken), {})
         self.assertEqual(len(get_unfulfilled_core_classes(self.courses_taken)), 8-3)
+
+    def test_remaining_courses(self):
+        fulfill_pairs_list = get_all_track_fulfillments(self.courses_taken)
+        self.remaining_course_count_requirement_per_tracksub = get_rem_req_count_per_tracksub(fulfill_pairs_list)
+        list_count_foundations = self.remaining_course_count_requirement_per_tracksub[0]
+        self.assertTrue(list_count_foundations[0] >= 0)
+        self.assertTrue(list_count_foundations[1] >= 0)
 
 class CourseEqualMatcher(unittest.TestCase):
     """

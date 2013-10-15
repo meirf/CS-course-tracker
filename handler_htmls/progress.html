@@ -25,9 +25,10 @@
     
     {# Show general course requirements for track subsection #}
 
-    {% macro print_track_sub_req_heading(minimum, num_sat, reqs) %}
+    {% macro print_track_sub_req_heading(minimum, num_sat, reqs, identifier) %}
         <tr>
            <th align="left">
+                <i>Section {{identifier}}</i>:
                 {% set length = reqs|length %}
                 {% if length == num_sat %}
                     {{num_sat}} required courses
@@ -57,7 +58,7 @@
             </tr>
             {% set i = 0 %}
             {% for sub_section in fulfill_pairs[1] %}
-                {{ print_track_sub_req_heading(track.track_subs[i].minimum, track.track_subs[i].num_classes, track.track_subs[i].course_reqs) }}
+                {{ print_track_sub_req_heading(track.track_subs[i].minimum, track.track_subs[i].num_classes, track.track_subs[i].course_reqs, track.track_subs[i].identifier) }}
                 {{ print_sub_sec(sub_section) }}
                 {% set i = i + 1 %}
             {% endfor %}
@@ -81,7 +82,9 @@
     {% for track_pairs in fulfill_pairs_list %}
         {{ show_specific_track(track_pairs) }}
     {% endfor %}
-    
+
+    {{remaining_course_count_requirement_per_tracksub}}
+
 </body>
 </html>
 {% endautoescape %}
