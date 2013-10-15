@@ -40,9 +40,11 @@ class DisplayTakenTrackInfo(webapp2.RequestHandler):
     def get(self):
         courses_taken_preformatted = get_url_param_mappings(str(self.request)).keys()
         courses_taken = course_utils.get_conversion_for_all_inputted_elements(courses_taken_preformatted)
+        unfulfilled_core_classes = get_unfulfilled_core_classes(courses_taken)
+        fulfill_pairs_list = get_all_track_fulfillments(courses_taken)
         template_values = {
-            'fulfill_pairs_list': get_all_track_fulfillments(courses_taken),
-            'unfulfilled_core_classes': get_unfulfilled_core_classes(courses_taken),
+            'unfulfilled_core_classes': unfulfilled_core_classes,
+            'fulfill_pairs_list': fulfill_pairs_list,
         }
         self.response.write(get_rendering(template_values, 'progress.html'))
 

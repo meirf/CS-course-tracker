@@ -12,6 +12,9 @@ def get_all_track_fulfillments(courses_taken):
     """
     Returns for each track the courses taken that match
     the requirements for that track (including all track subsections.)
+    Returns list of (track, fulfillment) tuples;
+            each fulfillment is list of dicts, one dict per track subsection
+            each dict maps course subsection req -> list of sat courses
     """
     return [(track, track_utils.get_track_req_fulf_pairs(track, courses_taken)) for track in tracks]
 
