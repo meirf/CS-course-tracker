@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>shobb.handler_htmls.course_tracker_main</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="shobb-module.html">Package&nbsp;shobb</a> ::
+        <a href="shobb.handler_htmls-module.html">Package&nbsp;handler_htmls</a> ::
+        Module&nbsp;course_tracker_main
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="shobb.handler_htmls.course_tracker_main-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="shobb.handler_htmls.course_tracker_main-module.html">Module shobb.handler_htmls.course_tracker_main</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">jinja2</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">webapp2</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package shobb.cs_course_pool=shobb.cs_course_pool-module.html"><a title="shobb.cs_course_pool" class="py-name" href="#" onclick="return doclink('link-0', 'cs_course_pool', 'link-0');">cs_course_pool</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module shobb.cs_course_pool.core_courses=shobb.cs_course_pool.core_courses-module.html"><a title="shobb.cs_course_pool.core_courses" class="py-name" href="#" onclick="return doclink('link-1', 'core_courses', 'link-1');">core_courses</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Variable shobb.cs_course_pool.core_courses.courses=shobb.cs_course_pool.core_courses-module.html#courses"><a title="shobb.cs_course_pool.core_courses.courses" class="py-name" href="#" onclick="return doclink('link-2', 'courses', 'link-2');">courses</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="shobb.cs_course_pool" class="py-name" href="#" onclick="return doclink('link-3', 'cs_course_pool', 'link-0');">cs_course_pool</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module shobb.cs_course_pool.advanced_courses=shobb.cs_course_pool.advanced_courses-module.html"><a title="shobb.cs_course_pool.advanced_courses" class="py-name" href="#" onclick="return doclink('link-4', 'advanced_courses', 'link-4');">advanced_courses</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Variable shobb.cs_course_pool.advanced_courses.adv_courses=shobb.cs_course_pool.advanced_courses-module.html#adv_courses"><a title="shobb.cs_course_pool.advanced_courses.adv_courses" class="py-name" href="#" onclick="return doclink('link-5', 'adv_courses', 'link-5');">adv_courses</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">operator</tt> <tt class="py-keyword">import</tt> <tt class="py-name">attrgetter</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name" targets="Package shobb.matching_utils=shobb.matching_utils-module.html"><a title="shobb.matching_utils" class="py-name" href="#" onclick="return doclink('link-6', 'matching_utils', 'link-6');">matching_utils</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name" targets="Module shobb.matching_utils.course_utils=shobb.matching_utils.course_utils-module.html"><a title="shobb.matching_utils.course_utils" class="py-name" href="#" onclick="return doclink('link-7', 'course_utils', 'link-7');">course_utils</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name" targets="Package shobb.url_manipulation=shobb.url_manipulation-module.html"><a title="shobb.url_manipulation" class="py-name" href="#" onclick="return doclink('link-8', 'url_manipulation', 'link-8');">url_manipulation</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Module shobb.url_manipulation.url_decode=shobb.url_manipulation.url_decode-module.html"><a title="shobb.url_manipulation.url_decode" class="py-name" href="#" onclick="return doclink('link-9', 'url_decode', 'link-9');">url_decode</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Function shobb.url_manipulation.url_decode.get_url_param_mappings()=shobb.url_manipulation.url_decode-module.html#get_url_param_mappings"><a title="shobb.url_manipulation.url_decode.get_url_param_mappings" class="py-name" href="#" onclick="return doclink('link-10', 'get_url_param_mappings', 'link-10');">get_url_param_mappings</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-11" class="py-name"><a title="shobb.matching_utils" class="py-name" href="#" onclick="return doclink('link-11', 'matching_utils', 'link-6');">matching_utils</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Module shobb.matching_utils.compute_fulfill_main=shobb.matching_utils.compute_fulfill_main-module.html"><a title="shobb.matching_utils.compute_fulfill_main" class="py-name" href="#" onclick="return doclink('link-12', 'compute_fulfill_main', 'link-12');">compute_fulfill_main</a></tt> <tt class="py-keyword">import</tt> <tt id="link-13" class="py-name" targets="Function shobb.matching_utils.compute_fulfill_main.get_all_track_fulfillments()=shobb.matching_utils.compute_fulfill_main-module.html#get_all_track_fulfillments"><a title="shobb.matching_utils.compute_fulfill_main.get_all_track_fulfillments" class="py-name" href="#" onclick="return doclink('link-13', 'get_all_track_fulfillments', 'link-13');">get_all_track_fulfillments</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name" targets="Function shobb.matching_utils.compute_fulfill_main.get_unfulfilled_core_classes()=shobb.matching_utils.compute_fulfill_main-module.html#get_unfulfilled_core_classes"><a title="shobb.matching_utils.compute_fulfill_main.get_unfulfilled_core_classes" class="py-name" href="#" onclick="return doclink('link-14', 'get_unfulfilled_core_classes', 'link-14');">get_unfulfilled_core_classes</a></tt><tt class="py-op">,</tt> <tt id="link-15" class="py-name" targets="Function shobb.matching_utils.compute_fulfill_main.get_rem_req_count_per_tracksub()=shobb.matching_utils.compute_fulfill_main-module.html#get_rem_req_count_per_tracksub"><a title="shobb.matching_utils.compute_fulfill_main.get_rem_req_count_per_tracksub" class="py-name" href="#" onclick="return doclink('link-15', 'get_rem_req_count_per_tracksub', 'link-15');">get_rem_req_count_per_tracksub</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable shobb.handler_htmls.course_tracker_main.JINJA_ENVIRONMENT=shobb.handler_htmls.course_tracker_main-module.html#JINJA_ENVIRONMENT"><a title="shobb.handler_htmls.course_tracker_main.JINJA_ENVIRONMENT" class="py-name" href="#" onclick="return doclink('link-16', 'JINJA_ENVIRONMENT', 'link-16');">JINJA_ENVIRONMENT</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">jinja2</tt><tt class="py-op">.</tt><tt class="py-name">Environment</tt><tt class="py-op">(</tt><tt class="py-name">loader</tt><tt class="py-op">=</tt><tt class="py-name">jinja2</tt><tt class="py-op">.</tt><tt class="py-name">FileSystemLoader</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">extensions</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">'jinja2.ext.autoescape'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="get_rendering"></a><div id="get_rendering-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="get_rendering-toggle" onclick="return toggle('get_rendering');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.handler_htmls.course_tracker_main-module.html#get_rendering">get_rendering</a><tt class="py-op">(</tt><tt class="py-param">var_mapping</tt><tt class="py-op">,</tt> <tt class="py-param">html_file_name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_rendering-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="get_rendering-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-name">template</tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="shobb.handler_htmls.course_tracker_main.JINJA_ENVIRONMENT" class="py-name" href="#" onclick="return doclink('link-17', 'JINJA_ENVIRONMENT', 'link-16');">JINJA_ENVIRONMENT</a></tt><tt class="py-op">.</tt><tt class="py-name">get_template</tt><tt class="py-op">(</tt><tt class="py-name">html_file_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">var_mapping</tt><tt class="py-op">)</tt>     </tt>
+</div><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="MainPage"></a><div id="MainPage-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="MainPage-toggle" onclick="return toggle('MainPage');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.handler_htmls.course_tracker_main.MainPage-class.html">MainPage</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainPage-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MainPage-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">    Retrieves courses data and displays main page.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="MainPage.get"></a><div id="MainPage.get-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="MainPage.get-toggle" onclick="return toggle('MainPage.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.handler_htmls.course_tracker_main.MainPage-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainPage.get-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MainPage.get-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">template_values</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">            <tt class="py-string">'core_courses'</tt><tt class="py-op">:</tt> <tt id="link-18" class="py-name"><a title="shobb.cs_course_pool.core_courses.courses" class="py-name" href="#" onclick="return doclink('link-18', 'courses', 'link-2');">courses</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">            <tt class="py-string">'adv_courses'</tt><tt class="py-op">:</tt> <tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt class="py-name">list</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="shobb.cs_course_pool.advanced_courses.adv_courses" class="py-name" href="#" onclick="return doclink('link-19', 'adv_courses', 'link-5');">adv_courses</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">=</tt><tt class="py-name">attrgetter</tt><tt class="py-op">(</tt><tt class="py-string">'course_num'</tt><tt class="py-op">,</tt> <tt class="py-string">'title'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">         </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt id="link-20" class="py-name" targets="Function shobb.handler_htmls.course_tracker_main.get_rendering()=shobb.handler_htmls.course_tracker_main-module.html#get_rendering"><a title="shobb.handler_htmls.course_tracker_main.get_rendering" class="py-name" href="#" onclick="return doclink('link-20', 'get_rendering', 'link-20');">get_rendering</a></tt><tt class="py-op">(</tt><tt class="py-name">template_values</tt><tt class="py-op">,</tt> <tt class="py-string">'index.html'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="DisplayTakenTrackInfo"></a><div id="DisplayTakenTrackInfo-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="DisplayTakenTrackInfo-toggle" onclick="return toggle('DisplayTakenTrackInfo');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.handler_htmls.course_tracker_main.DisplayTakenTrackInfo-class.html">DisplayTakenTrackInfo</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DisplayTakenTrackInfo-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DisplayTakenTrackInfo-expanded"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring">    Gets course requirement matching info for progress display page.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="DisplayTakenTrackInfo.get"></a><div id="DisplayTakenTrackInfo.get-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="DisplayTakenTrackInfo.get-toggle" onclick="return toggle('DisplayTakenTrackInfo.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.handler_htmls.course_tracker_main.DisplayTakenTrackInfo-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DisplayTakenTrackInfo.get-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DisplayTakenTrackInfo.get-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-name">courses_taken_preformatted</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="shobb.url_manipulation.url_decode.get_url_param_mappings" class="py-name" href="#" onclick="return doclink('link-21', 'get_url_param_mappings', 'link-10');">get_url_param_mappings</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-name">courses_taken</tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="shobb.matching_utils.course_utils" class="py-name" href="#" onclick="return doclink('link-22', 'course_utils', 'link-7');">course_utils</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Function shobb.matching_utils.course_utils.get_conversion_for_all_inputted_elements()=shobb.matching_utils.course_utils-module.html#get_conversion_for_all_inputted_elements"><a title="shobb.matching_utils.course_utils.get_conversion_for_all_inputted_elements" class="py-name" href="#" onclick="return doclink('link-23', 'get_conversion_for_all_inputted_elements', 'link-23');">get_conversion_for_all_inputted_elements</a></tt><tt class="py-op">(</tt><tt class="py-name">courses_taken_preformatted</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">unfulfilled_core_classes</tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="shobb.matching_utils.compute_fulfill_main.get_unfulfilled_core_classes" class="py-name" href="#" onclick="return doclink('link-24', 'get_unfulfilled_core_classes', 'link-14');">get_unfulfilled_core_classes</a></tt><tt class="py-op">(</tt><tt class="py-name">courses_taken</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-name">fulfill_pairs_list</tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="shobb.matching_utils.compute_fulfill_main.get_all_track_fulfillments" class="py-name" href="#" onclick="return doclink('link-25', 'get_all_track_fulfillments', 'link-13');">get_all_track_fulfillments</a></tt><tt class="py-op">(</tt><tt class="py-name">courses_taken</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">remaining_course_count_requirement_per_tracksub</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="shobb.matching_utils.compute_fulfill_main.get_rem_req_count_per_tracksub" class="py-name" href="#" onclick="return doclink('link-26', 'get_rem_req_count_per_tracksub', 'link-15');">get_rem_req_count_per_tracksub</a></tt><tt class="py-op">(</tt><tt class="py-name">fulfill_pairs_list</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">template_values</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">            <tt class="py-string">'unfulfilled_core_classes'</tt><tt class="py-op">:</tt> <tt class="py-name">unfulfilled_core_classes</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">            <tt class="py-string">'fulfill_pairs_list'</tt><tt class="py-op">:</tt> <tt class="py-name">fulfill_pairs_list</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">            <tt class="py-string">'remaining_course_count_requirement_per_tracksub'</tt><tt class="py-op">:</tt> <tt class="py-name">remaining_course_count_requirement_per_tracksub</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">            <tt class="py-string">'letters'</tt><tt class="py-op">:</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">uppercase</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="shobb.handler_htmls.course_tracker_main.get_rendering" class="py-name" href="#" onclick="return doclink('link-27', 'get_rendering', 'link-20');">get_rendering</a></tt><tt class="py-op">(</tt><tt class="py-name">template_values</tt><tt class="py-op">,</tt> <tt class="py-string">'progress.html'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt id="link-28" class="py-name" targets="Variable shobb.handler_htmls.course_tracker_main.application=shobb.handler_htmls.course_tracker_main-module.html#application"><a title="shobb.handler_htmls.course_tracker_main.application" class="py-name" href="#" onclick="return doclink('link-28', 'application', 'link-28');">application</a></tt> <tt class="py-op">=</tt> <tt class="py-name">webapp2</tt><tt class="py-op">.</tt><tt class="py-name">WSGIApplication</tt><tt class="py-op">(</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">,</tt> <tt id="link-29" class="py-name" targets="Class shobb.handler_htmls.course_tracker_main.MainPage=shobb.handler_htmls.course_tracker_main.MainPage-class.html"><a title="shobb.handler_htmls.course_tracker_main.MainPage" class="py-name" href="#" onclick="return doclink('link-29', 'MainPage', 'link-29');">MainPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">     <tt class="py-op">(</tt><tt class="py-string">'/taken'</tt><tt class="py-op">,</tt> <tt id="link-30" class="py-name" targets="Class shobb.handler_htmls.course_tracker_main.DisplayTakenTrackInfo=shobb.handler_htmls.course_tracker_main.DisplayTakenTrackInfo-class.html"><a title="shobb.handler_htmls.course_tracker_main.DisplayTakenTrackInfo" class="py-name" href="#" onclick="return doclink('link-30', 'DisplayTakenTrackInfo', 'link-30');">DisplayTakenTrackInfo</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">     <tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">debug</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct 15 21:49:13 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

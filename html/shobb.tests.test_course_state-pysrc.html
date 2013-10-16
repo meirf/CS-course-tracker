@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>shobb.tests.test_course_state</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="shobb-module.html">Package&nbsp;shobb</a> ::
+        <a href="shobb.tests-module.html">Package&nbsp;tests</a> ::
+        Module&nbsp;test_course_state
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="shobb.tests.test_course_state-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="shobb.tests.test_course_state-module.html">Module shobb.tests.test_course_state</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package shobb.cs_course_pool=shobb.cs_course_pool-module.html"><a title="shobb.cs_course_pool" class="py-name" href="#" onclick="return doclink('link-0', 'cs_course_pool', 'link-0');">cs_course_pool</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module shobb.cs_course_pool.core_courses=shobb.cs_course_pool.core_courses-module.html"><a title="shobb.cs_course_pool.core_courses" class="py-name" href="#" onclick="return doclink('link-1', 'core_courses', 'link-1');">core_courses</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Variable shobb.cs_course_pool.core_courses.courses=shobb.cs_course_pool.core_courses-module.html#courses"><a title="shobb.cs_course_pool.core_courses.courses" class="py-name" href="#" onclick="return doclink('link-2', 'courses', 'link-2');">courses</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="shobb.cs_course_pool" class="py-name" href="#" onclick="return doclink('link-3', 'cs_course_pool', 'link-0');">cs_course_pool</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module shobb.cs_course_pool.advanced_courses=shobb.cs_course_pool.advanced_courses-module.html"><a title="shobb.cs_course_pool.advanced_courses" class="py-name" href="#" onclick="return doclink('link-4', 'advanced_courses', 'link-4');">advanced_courses</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Variable shobb.cs_course_pool.advanced_courses.adv_courses=shobb.cs_course_pool.advanced_courses-module.html#adv_courses"><a title="shobb.cs_course_pool.advanced_courses.adv_courses" class="py-name" href="#" onclick="return doclink('link-5', 'adv_courses', 'link-5');">adv_courses</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name"><a title="shobb.cs_course_pool" class="py-name" href="#" onclick="return doclink('link-6', 'cs_course_pool', 'link-0');">cs_course_pool</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module shobb.cs_course_pool.course_template=shobb.cs_course_pool.course_template-module.html"><a title="shobb.cs_course_pool.course_template" class="py-name" href="#" onclick="return doclink('link-7', 'course_template', 'link-7');">course_template</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class shobb.cs_course_pool.course_template.Course=shobb.cs_course_pool.course_template.Course-class.html"><a title="shobb.cs_course_pool.course_template.Course" class="py-name" href="#" onclick="return doclink('link-8', 'Course', 'link-8');">Course</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name" targets="Package shobb.track_requirements=shobb.track_requirements-module.html"><a title="shobb.track_requirements" class="py-name" href="#" onclick="return doclink('link-9', 'track_requirements', 'link-9');">track_requirements</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Module shobb.track_requirements.course_structures=shobb.track_requirements.course_structures-module.html"><a title="shobb.track_requirements.course_structures" class="py-name" href="#" onclick="return doclink('link-10', 'course_structures', 'link-10');">course_structures</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Class shobb.track_requirements.course_structures.CourseReq=shobb.track_requirements.course_structures.CourseReq-class.html"><a title="shobb.track_requirements.course_structures.CourseReq" class="py-name" href="#" onclick="return doclink('link-11', 'CourseReq', 'link-11');">CourseReq</a></tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name" targets="Class shobb.track_requirements.course_structures.TrackSubsection=shobb.track_requirements.course_structures.TrackSubsection-class.html"><a title="shobb.track_requirements.course_structures.TrackSubsection" class="py-name" href="#" onclick="return doclink('link-12', 'TrackSubsection', 'link-12');">TrackSubsection</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-13" class="py-name"><a title="shobb.track_requirements" class="py-name" href="#" onclick="return doclink('link-13', 'track_requirements', 'link-9');">track_requirements</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Module shobb.track_requirements.foundations=shobb.track_requirements.foundations-module.html"><a title="shobb.track_requirements.foundations" class="py-name" href="#" onclick="return doclink('link-14', 'foundations', 'link-14');">foundations</a></tt> <tt class="py-keyword">import</tt> <tt id="link-15" class="py-name" targets="Variable shobb.track_requirements.foundations.found_sec_A_courses=shobb.track_requirements.foundations-module.html#found_sec_A_courses"><a title="shobb.track_requirements.foundations.found_sec_A_courses" class="py-name" href="#" onclick="return doclink('link-15', 'found_sec_A_courses', 'link-15');">found_sec_A_courses</a></tt><tt class="py-op">,</tt> <tt id="link-16" class="py-name" targets="Variable shobb.track_requirements.foundations.found_sec_B_courses=shobb.track_requirements.foundations-module.html#found_sec_B_courses"><a title="shobb.track_requirements.foundations.found_sec_B_courses" class="py-name" href="#" onclick="return doclink('link-16', 'found_sec_B_courses', 'link-16');">found_sec_B_courses</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="CourseTest"></a><div id="CourseTest-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="CourseTest-toggle" onclick="return toggle('CourseTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.tests.test_course_state.CourseTest-class.html">CourseTest</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CourseTest-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="CourseTest-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="CourseTest.setUp"></a><div id="CourseTest.setUp-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="CourseTest.setUp-toggle" onclick="return toggle('CourseTest.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.CourseTest-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CourseTest.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CourseTest.setUp-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Variable shobb.cs_course_pool.core_courses.intro_honors=shobb.cs_course_pool.core_courses-module.html#intro_honors"><a title="shobb.cs_course_pool.core_courses.intro_honors" class="py-name" href="#" onclick="return doclink('link-17', 'intro_honors', 'link-17');">intro_honors</a></tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="shobb.cs_course_pool.course_template.Course" class="py-name" href="#" onclick="return doclink('link-18', 'Course', 'link-8');">Course</a></tt><tt class="py-op">(</tt><tt class="py-string">'COMS'</tt><tt class="py-op">,</tt> <tt class="py-string">"1007"</tt><tt class="py-op">,</tt> <tt class="py-string">'Honors Intro to CS'</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Variable shobb.cs_course_pool.core_courses.intro_basic=shobb.cs_course_pool.core_courses-module.html#intro_basic"><a title="shobb.cs_course_pool.core_courses.intro_basic" class="py-name" href="#" onclick="return doclink('link-19', 'intro_basic', 'link-19');">intro_basic</a></tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="shobb.cs_course_pool.course_template.Course" class="py-name" href="#" onclick="return doclink('link-20', 'Course', 'link-8');">Course</a></tt><tt class="py-op">(</tt><tt class="py-string">'COMS'</tt><tt class="py-op">,</tt> <tt class="py-string">"1004"</tt><tt class="py-op">,</tt> <tt class="py-string">'Intro to CS and Prog in Java'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="shobb.cs_course_pool.core_courses.intro_honors" class="py-name" href="#" onclick="return doclink('link-21', 'intro_honors', 'link-17');">intro_honors</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">     </tt>
+<a name="CourseTest.test_course_import"></a><div id="CourseTest.test_course_import-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="CourseTest.test_course_import-toggle" onclick="return toggle('CourseTest.test_course_import');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.CourseTest-class.html#test_course_import">test_course_import</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CourseTest.test_course_import-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CourseTest.test_course_import-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">        Make sure both course lists are not empty</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertGreater</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-22" class="py-name"><a title="shobb.cs_course_pool.core_courses.courses" class="py-name" href="#" onclick="return doclink('link-22', 'courses', 'link-2');">courses</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertGreater</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="shobb.cs_course_pool.advanced_courses.adv_courses" class="py-name" href="#" onclick="return doclink('link-23', 'adv_courses', 'link-5');">adv_courses</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="CourseTest.test_repr_course"></a><div id="CourseTest.test_repr_course-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="CourseTest.test_repr_course-toggle" onclick="return toggle('CourseTest.test_repr_course');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.CourseTest-class.html#test_repr_course">test_repr_course</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CourseTest.test_repr_course-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CourseTest.test_repr_course-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">        Test repr function</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="shobb.cs_course_pool.core_courses.intro_basic" class="py-name" href="#" onclick="return doclink('link-24', 'intro_basic', 'link-19');">intro_basic</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Course :  COMS 1004 Intro to CS and Prog in Java OR '</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">                        <tt class="py-op">+</tt> <tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="shobb.cs_course_pool.core_courses.intro_honors" class="py-name" href="#" onclick="return doclink('link-25', 'intro_honors', 'link-17');">intro_honors</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="TestGeneralCourseReq"></a><div id="TestGeneralCourseReq-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="TestGeneralCourseReq-toggle" onclick="return toggle('TestGeneralCourseReq');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestGeneralCourseReq-class.html">TestGeneralCourseReq</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGeneralCourseReq-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestGeneralCourseReq-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="TestGeneralCourseReq.test_course_req_creation"></a><div id="TestGeneralCourseReq.test_course_req_creation-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="TestGeneralCourseReq.test_course_req_creation-toggle" onclick="return toggle('TestGeneralCourseReq.test_course_req_creation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestGeneralCourseReq-class.html#test_course_req_creation">test_course_req_creation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGeneralCourseReq.test_course_req_creation-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestGeneralCourseReq.test_course_req_creation-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">        Ensure insantion occurs</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertIsNotNone</tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="shobb.track_requirements.course_structures.CourseReq" class="py-name" href="#" onclick="return doclink('link-26', 'CourseReq', 'link-11');">CourseReq</a></tt><tt class="py-op">(</tt><tt class="py-string">'41'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-string">'COMS'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="TestTrackSubsection"></a><div id="TestTrackSubsection-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="TestTrackSubsection-toggle" onclick="return toggle('TestTrackSubsection');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestTrackSubsection-class.html">TestTrackSubsection</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestTrackSubsection-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestTrackSubsection-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="TestTrackSubsection.test_track_subsection"></a><div id="TestTrackSubsection.test_track_subsection-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="TestTrackSubsection.test_track_subsection-toggle" onclick="return toggle('TestTrackSubsection.test_track_subsection');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestTrackSubsection-class.html#test_track_subsection">test_track_subsection</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestTrackSubsection.test_track_subsection-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestTrackSubsection.test_track_subsection-expanded"><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">        Ensure track subsection created</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertIsNotNone</tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="shobb.track_requirements.course_structures.TrackSubsection" class="py-name" href="#" onclick="return doclink('link-27', 'TrackSubsection', 'link-12');">TrackSubsection</a></tt><tt class="py-op">(</tt><tt class="py-number">5</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="TestTrackFull"></a><div id="TestTrackFull-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="TestTrackFull-toggle" onclick="return toggle('TestTrackFull');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestTrackFull-class.html">TestTrackFull</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestTrackFull-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestTrackFull-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
+<a name="TestTrackFull.test_foundations_class_size"></a><div id="TestTrackFull.test_foundations_class_size-def"><a name="L52"></a><tt class="py-lineno">52</tt> <a class="py-toggle" href="#" id="TestTrackFull.test_foundations_class_size-toggle" onclick="return toggle('TestTrackFull.test_foundations_class_size');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestTrackFull-class.html#test_foundations_class_size">test_foundations_class_size</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestTrackFull.test_foundations_class_size-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestTrackFull.test_foundations_class_size-expanded"><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">        Test specific size for foundations track</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-28" class="py-name"><a title="shobb.track_requirements.foundations.found_sec_A_courses" class="py-name" href="#" onclick="return doclink('link-28', 'found_sec_A_courses', 'link-15');">found_sec_A_courses</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="shobb.track_requirements.foundations.found_sec_B_courses" class="py-name" href="#" onclick="return doclink('link-29', 'found_sec_B_courses', 'link-16');">found_sec_B_courses</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-number">16</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt>
+<a name="TestCourseReqHashable"></a><div id="TestCourseReqHashable-def"><a name="L60"></a><tt class="py-lineno">60</tt> <a class="py-toggle" href="#" id="TestCourseReqHashable-toggle" onclick="return toggle('TestCourseReqHashable');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestCourseReqHashable-class.html">TestCourseReqHashable</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCourseReqHashable-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestCourseReqHashable-expanded"><a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="TestCourseReqHashable.test_hashable_coursereq"></a><div id="TestCourseReqHashable.test_hashable_coursereq-def"><a name="L62"></a><tt class="py-lineno">62</tt> <a class="py-toggle" href="#" id="TestCourseReqHashable.test_hashable_coursereq-toggle" onclick="return toggle('TestCourseReqHashable.test_hashable_coursereq');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.tests.test_course_state.TestCourseReqHashable-class.html#test_hashable_coursereq">test_hashable_coursereq</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCourseReqHashable.test_hashable_coursereq-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestCourseReqHashable.test_hashable_coursereq-expanded"><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">        Ensure coursereq instance is hashable by putting it in dict</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertIsNotNone</tt><tt class="py-op">(</tt><tt class="py-op">{</tt><tt id="link-30" class="py-name"><a title="shobb.track_requirements.course_structures.CourseReq" class="py-name" href="#" onclick="return doclink('link-30', 'CourseReq', 'link-11');">CourseReq</a></tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct 15 21:49:14 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

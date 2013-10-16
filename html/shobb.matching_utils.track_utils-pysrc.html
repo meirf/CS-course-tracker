@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>shobb.matching_utils.track_utils</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="shobb-module.html">Package&nbsp;shobb</a> ::
+        <a href="shobb.matching_utils-module.html">Package&nbsp;matching_utils</a> ::
+        Module&nbsp;track_utils
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="shobb.matching_utils.track_utils-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="shobb.matching_utils.track_utils-module.html">Module shobb.matching_utils.track_utils</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Gathers data on which requirements are fulfilled by which taken courses</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="get_track_req_fulf_pairs"></a><div id="get_track_req_fulf_pairs-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="get_track_req_fulf_pairs-toggle" onclick="return toggle('get_track_req_fulf_pairs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.matching_utils.track_utils-module.html#get_track_req_fulf_pairs">get_track_req_fulf_pairs</a><tt class="py-op">(</tt><tt class="py-param">track</tt><tt class="py-op">,</tt> <tt class="py-param">courses_taken</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_track_req_fulf_pairs-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="get_track_req_fulf_pairs-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Return list of dicts, each dict { req -&gt; list of satisfying classes }</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt id="link-0" class="py-name" targets="Function shobb.matching_utils.track_utils.get_track_sub_req_fulf_pairs()=shobb.matching_utils.track_utils-module.html#get_track_sub_req_fulf_pairs"><a title="shobb.matching_utils.track_utils.get_track_sub_req_fulf_pairs" class="py-name" href="#" onclick="return doclink('link-0', 'get_track_sub_req_fulf_pairs', 'link-0');">get_track_sub_req_fulf_pairs</a></tt><tt class="py-op">(</tt><tt class="py-name">subsection</tt><tt class="py-op">,</tt> <tt class="py-name">courses_taken</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">subsection</tt> <tt class="py-keyword">in</tt> <tt class="py-name">track</tt><tt class="py-op">.</tt><tt class="py-name">track_subs</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="get_track_sub_req_fulf_pairs"></a><div id="get_track_sub_req_fulf_pairs-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="get_track_sub_req_fulf_pairs-toggle" onclick="return toggle('get_track_sub_req_fulf_pairs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.matching_utils.track_utils-module.html#get_track_sub_req_fulf_pairs">get_track_sub_req_fulf_pairs</a><tt class="py-op">(</tt><tt class="py-param">subsection</tt><tt class="py-op">,</tt> <tt class="py-param">courses_taken</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_track_sub_req_fulf_pairs-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="get_track_sub_req_fulf_pairs-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">    Return dict: { req -&gt; list of satisfying classes }</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-name">fulfs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-name">req</tt><tt class="py-op">:</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> <tt class="py-keyword">for</tt> <tt class="py-name">req</tt> <tt class="py-keyword">in</tt> <tt class="py-name">subsection</tt><tt class="py-op">.</tt><tt class="py-name">course_reqs</tt><tt class="py-op">}</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-name">num_req_classes</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-name">req_index</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">req_index</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">subsection</tt><tt class="py-op">.</tt><tt class="py-name">course_reqs</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">num_req_classes</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">subsection</tt><tt class="py-op">.</tt><tt class="py-name">num_classes</tt><tt class="py-op">:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">course_req</tt> <tt class="py-op">=</tt> <tt class="py-name">subsection</tt><tt class="py-op">.</tt><tt class="py-name">course_reqs</tt><tt class="py-op">[</tt><tt class="py-name">req_index</tt><tt class="py-op">]</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">req_index</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">course</tt> <tt class="py-keyword">in</tt> <tt class="py-name">courses_taken</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-1" class="py-name" targets="Function shobb.matching_utils.track_utils.is_fulfilled()=shobb.matching_utils.track_utils-module.html#is_fulfilled"><a title="shobb.matching_utils.track_utils.is_fulfilled" class="py-name" href="#" onclick="return doclink('link-1', 'is_fulfilled', 'link-1');">is_fulfilled</a></tt><tt class="py-op">(</tt><tt class="py-name">course</tt><tt class="py-op">,</tt> <tt class="py-name">course_req</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                <tt class="py-name">fulfs</tt><tt class="py-op">[</tt><tt class="py-name">course_req</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">course</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                <tt class="py-name">num_req_classes</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">fulfs</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="is_fulfilled"></a><div id="is_fulfilled-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="is_fulfilled-toggle" onclick="return toggle('is_fulfilled');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="shobb.matching_utils.track_utils-module.html#is_fulfilled">is_fulfilled</a><tt class="py-op">(</tt><tt class="py-param">course</tt><tt class="py-op">,</tt> <tt class="py-param">requirement</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="is_fulfilled-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="is_fulfilled-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    Return true if courses matches req</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">course</tt><tt class="py-op">.</tt><tt class="py-name">title</tt> <tt class="py-op">!=</tt> <tt class="py-name">requirement</tt><tt class="py-op">.</tt><tt class="py-name">title</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">' '</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">course</tt><tt class="py-op">.</tt><tt class="py-name">title</tt> <tt class="py-op">!=</tt> <tt class="py-name">requirement</tt><tt class="py-op">.</tt><tt class="py-name">title</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">course</tt><tt class="py-op">.</tt><tt class="py-name">dept</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">requirement</tt><tt class="py-op">.</tt><tt class="py-name">departments</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">course</tt><tt class="py-op">.</tt><tt class="py-name">course_num</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-name">requirement</tt><tt class="py-op">.</tt><tt class="py-name">prefix</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="shobb-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Oct 15 21:49:14 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
