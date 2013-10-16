@@ -71,11 +71,17 @@ class TestCoreClassesNotFulfilled(unittest.TestCase):
         self.courses_taken = course_utils.get_conversion_for_all_inputted_elements(courses_taken_input)
 
     def test_core_classes_not_taken_not_none(self):
+        """
+        Test unfulfilled courses size
+        """
         self.assertIsNotNone(get_unfulfilled_core_classes(self.courses_taken))
         self.assertNotEqual(get_unfulfilled_core_classes(self.courses_taken), {})
         self.assertEqual(len(get_unfulfilled_core_classes(self.courses_taken)), 8-3)
 
     def test_remaining_courses(self):
+        """
+        Test number of classes that still need to be fulfilled
+        """
         fulfill_pairs_list = get_all_track_fulfillments(self.courses_taken)
         self.remaining_course_count_requirement_per_tracksub = get_rem_req_count_per_tracksub(fulfill_pairs_list)
         list_count_foundations = self.remaining_course_count_requirement_per_tracksub[0]
@@ -98,10 +104,16 @@ class CourseEqualMatcher(unittest.TestCase):
         self.assertNotEqual(self.course_a, None)
 
     def test_no_advanced_version(self):
+        """
+        Case where one course is not the advanced version of the other
+        """
         self.assertEqual(self.course_a, self.course_b)
         self.assertEqual(self.course_b, self.course_a)
 
     def test_with_adv_version(self):
+        """
+        Case where one course is the advanced version of the other
+        """
         self.assertEqual(self.stat_basic, self.stat_adv)
         self.assertNotEqual(self.stat_adv, self.stat_basic)
 
